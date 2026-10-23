@@ -1,0 +1,155 @@
+[
+ {
+  "name": "short_with_image",
+  "title": "Q3 Economic Outlook",
+  "subtitle": "What the reforms mean for banks",
+  "body": "A short body.",
+  "tags": [
+   "Research",
+   "highlight"
+  ],
+  "images": [
+   "https://x/a.jpg"
+  ],
+  "expected": {
+   "telegram": "Q3 Economic Outlook\n\n____\n\nWhat the reforms mean for banks\n\nA short body.\n\n#Research #highlight",
+   "instagram": "Q3 Economic Outlook\n\nWhat the reforms mean for banks\n\nA short body....\n\n#Research #highlight",
+   "facebook": "Q3 Economic Outlook\n\nWhat the reforms mean for banks\n\nA short body....\n\n#Research #highlight",
+   "linkedin": "Q3 Economic Outlook — What the reforms mean for banks"
+  }
+ },
+ {
+  "name": "short_text_only",
+  "title": "Q3 Economic Outlook",
+  "subtitle": "",
+  "body": "A short body.",
+  "tags": [
+   "Research"
+  ],
+  "images": [],
+  "expected": {
+   "telegram": "Q3 Economic Outlook\n\n____\n\nA short body.\n\n#Research",
+   "instagram": "Q3 Economic Outlook\n\n\n\nA short body....\n\n#Research",
+   "facebook": "Q3 Economic Outlook\n\n\n\nA short body....\n\n#Research",
+   "linkedin": "Q3 Economic Outlook —"
+  }
+ },
+ {
+  "name": "long_with_image_trims_body",
+  "title": "Long read",
+  "subtitle": "Subtitle here",
+  "body": "Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform.",
+  "tags": [
+   "Research",
+   "UCSEthiopia",
+   "Economy"
+  ],
+  "images": [
+   "https://x/a.jpg",
+   "https://x/b.jpg"
+  ],
+  "expected": {
+   "telegram": "Long read\n\n____\n\nSubtitle here\n\nEthiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new pha…\n\n#Research #UCSEthiopia #Economy",
+   "instagram": "Long read\n\nSubtitle here\n\nEthiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new p...\n\n#Research #UCSEthiopia #Economy",
+   "facebook": "Long read\n\nSubtitle here\n\nEthiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new p...\n\n#Research #UCSEthiopia #Economy",
+   "linkedin": "Long read — Subtitle here"
+  }
+ },
+ {
+  "name": "long_text_only",
+  "title": "Long read",
+  "subtitle": "Sub",
+  "body": "Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform.Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform.Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform.",
+  "tags": [],
+  "images": [],
+  "expected": {
+   "telegram": "Long read\n\n____\n\nSub\n\nEthiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform.Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is en…",
+   "instagram": "Long read\n\nSub\n\nEthiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new p...\n\n",
+   "facebook": "Long read\n\nSub\n\nEthiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new phase of reform. Ethiopia's economy is entering a new p...\n\n",
+   "linkedin": "Long read — Sub"
+  }
+ },
+ {
+  "name": "emoji_body",
+  "title": "Growth 📈",
+  "subtitle": "🇪🇹",
+  "body": "Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus.",
+  "tags": [
+   "Economy"
+  ],
+  "images": [
+   "https://x/a.jpg"
+  ],
+  "expected": {
+   "telegram": "Growth 📈\n\n____\n\n🇪🇹\n\nGrowth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Gro…\n\n#Economy",
+   "instagram": "Growth 📈\n\n🇪🇹\n\nGrowth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Gr...\n\n#Economy",
+   "facebook": "Growth 📈\n\n🇪🇹\n\nGrowth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Growth 📈 and reform 🇪🇹 in focus. Gr...\n\n#Economy",
+   "linkedin": "Growth 📈 — 🇪🇹"
+  }
+ },
+ {
+  "name": "no_title",
+  "title": "",
+  "subtitle": "Only subtitle",
+  "body": "Body",
+  "tags": [
+   "x"
+  ],
+  "images": [],
+  "expected": {
+   "telegram": "Only subtitle\n\nBody\n\n#x",
+   "instagram": "\n\nOnly subtitle\n\nBody...\n\n#x",
+   "facebook": "\n\nOnly subtitle\n\nBody...\n\n#x",
+   "linkedin": "— Only subtitle"
+  }
+ },
+ {
+  "name": "no_title_no_subtitle",
+  "title": "",
+  "subtitle": "",
+  "body": "Body only",
+  "tags": [],
+  "images": [],
+  "expected": {
+   "telegram": "Body only",
+   "instagram": "\n\n\n\nBody only...\n\n",
+   "facebook": "\n\n\n\nBody only...\n\n",
+   "linkedin": "—"
+  }
+ },
+ {
+  "name": "huge_title",
+  "title": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+  "subtitle": "S",
+  "body": "B",
+  "tags": [
+   "a"
+  ],
+  "images": [
+   "https://x/a.jpg"
+  ],
+  "expected": {
+   "telegram": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT…",
+   "instagram": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT\n\nS\n\nB...\n\n#a",
+   "facebook": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT\n\nS\n\nB...\n\n#a",
+   "linkedin": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT — S"
+  }
+ },
+ {
+  "name": "hash_prefixed_tag",
+  "title": "Tags",
+  "subtitle": "s",
+  "body": "b",
+  "tags": [
+   "#Already",
+   "Plain"
+  ],
+  "images": [],
+  "expected": {
+   "telegram": "Tags\n\n____\n\ns\n\nb\n\n#Already #Plain",
+   "instagram": "Tags\n\ns\n\nb...\n\n##Already #Plain",
+   "facebook": "Tags\n\ns\n\nb...\n\n##Already #Plain",
+   "linkedin": "Tags — s"
+  }
+ }
+]
