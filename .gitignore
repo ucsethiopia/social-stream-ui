@@ -47,3 +47,6 @@ integration-reference.md
 
 .claude
 /docs-local*
+
+# Vercel CLI
+.vercel
