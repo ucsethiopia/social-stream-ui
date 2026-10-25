@@ -2,6 +2,7 @@ import { ImageOff } from "lucide-react";
 import { Fragment } from "react";
 import { RemoteImage } from "@/components/shared/remote-image";
 import type { CaptionInput } from "@/lib/captions/types";
+import { initials } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 export interface PreviewProps {
@@ -12,7 +13,8 @@ export interface PreviewProps {
   date: string;
   orgName: string;
   orgImage: string | null;
-  websiteUrl: string | null;
+  /** The org's site; null when it has none, undefined while still loading. */
+  websiteUrl: string | null | undefined;
 }
 
 const HASHTAG = /(#[\p{L}\p{N}_]+)/u;
@@ -38,7 +40,7 @@ export function OrgAvatar({ src, name, className }: { src: string | null; name: 
   return src ? (
     <RemoteImage src={src} alt="" className={cn("shrink-0 bg-white object-contain p-0.5", className)} />
   ) : (
-    <span className={cn("grid shrink-0 place-items-center bg-[#1a2744] font-semibold text-white", className)}>{name.slice(0, 1)}</span>
+    <span className={cn("grid shrink-0 place-items-center bg-[#1a2744] font-semibold text-white", className)}>{initials(name)}</span>
   );
 }
 

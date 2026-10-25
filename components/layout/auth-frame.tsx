@@ -22,7 +22,7 @@ export function AuthFrame({ children, title, subtitle }: { children: ReactNode; 
           <div className="max-w-md">
             <p className="font-serif text-[44px] leading-[1.08] font-semibold text-balance">One story, told everywhere your clients read.</p>
             <p className="mt-5 text-[17px] leading-relaxed text-white/70">
-              Write a post once and publish it to the UCS website and your social channels, with a preview of each before it goes out.
+              Write a post once and publish it to your website and your social channels, with a preview of each before it goes out.
             </p>
             <ul className="mt-8 flex gap-2" aria-label="Destinations">
               {DESTINATIONS.map((id) => (

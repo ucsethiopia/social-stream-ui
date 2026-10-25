@@ -2,8 +2,6 @@
 // each one must be read with a literal `process.env.X` expression.
 
 const DEFAULT_API_URL = "http://localhost:8002";
-/** Pre-production: the public site lives on the dev subdomain until launch. */
-export const DEFAULT_SITE_URL = "https://dev.ucsethiopia.com";
 
 function flag(value: string | undefined): boolean {
   return value?.trim().toLowerCase() === "true";
@@ -24,8 +22,6 @@ export const config = {
   localSafeMode: flag(process.env.NEXT_PUBLIC_LOCAL_SAFE_MODE),
   /** Optional Clerk JWT template name passed to getToken({ template }). */
   jwtTemplate: process.env.NEXT_PUBLIC_CLERK_JWT_TEMPLATE?.trim() || undefined,
-  /** Public site that renders published posts (used for "View on website" links and the preview). */
-  companySiteUrl: (process.env.NEXT_PUBLIC_COMPANY_SITE_URL?.trim() || DEFAULT_SITE_URL).replace(/\/$/, ""),
   /** Sign-in hint only — Clerk enforces the actual restriction. */
   allowedEmailDomains: list(process.env.NEXT_PUBLIC_ALLOWED_EMAIL_DOMAINS),
   /** Flip on once the backend accepts `hashtags: string[]` on news (see CLAUDE.md → Backend requests). */

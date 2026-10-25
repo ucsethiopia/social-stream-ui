@@ -11,8 +11,8 @@ const sourceSans = Source_Sans_3({ subsets: ["latin"], variable: "--font-source-
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
 
 export const metadata: Metadata = {
-  title: { default: "Social Stream · UCS", template: "%s · Social Stream" },
-  description: "Write once, publish to the UCS website and every channel that matters.",
+  title: { default: "Social Stream", template: "%s · Social Stream" },
+  description: "Write a post once and publish it to your website and every social channel you use.",
   robots: { index: false, follow: false },
 };
 

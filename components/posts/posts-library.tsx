@@ -49,7 +49,7 @@ export function PostsLibrary() {
     <>
       <PageHeader
         title="Posts"
-        description="Everything your team has written. Drafts stay private until you publish them."
+        description="Everything your team has written. Drafts stay off the website until you publish them."
         actions={
           <Button onClick={openNew}>
             <PenLine /> New post

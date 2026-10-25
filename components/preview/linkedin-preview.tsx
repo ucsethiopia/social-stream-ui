@@ -1,5 +1,4 @@
 import { Globe2, MessageSquareText, Repeat2, Send, ThumbsUp } from "lucide-react";
-import { RemoteImage } from "@/components/shared/remote-image";
 import { ImageCollage, OrgAvatar, type PreviewProps } from "@/components/preview/shared";
 import { buildLinkedInCommentary } from "@/lib/captions/linkedin";
 
@@ -28,7 +27,7 @@ export function LinkedInPreview({ input, orgName, orgImage, websiteUrl }: Previe
       ) : host ? (
         <div className="mx-0 border-y border-black/10 bg-[#eef3f8]">
           <div className="flex items-center gap-3 p-3">
-            <RemoteImage src="/brand/ucs-mark.png" className="size-16 bg-white object-contain p-2" />
+            <OrgAvatar src={orgImage} name={orgName} className="size-16 p-2" />
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold">{orgName}</p>
               <p className="text-xs text-[rgba(0,0,0,0.6)]">{host}</p>

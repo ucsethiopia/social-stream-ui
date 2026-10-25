@@ -1,10 +1,10 @@
 # social-stream-ui
 
-The UCS content distribution app. You write a post once, see exactly how it will look on each platform, then publish it to the UCS website and whichever social channels you choose (LinkedIn, Telegram, Facebook, Instagram).
+A content distribution app. You write a post once, see exactly how it will look on each platform, then publish it to your organisation's website and whichever social channels you choose (LinkedIn, Telegram, Facebook, Instagram). One person can work across several organisations.
 
 It's a frontend for the [Social Stream API](https://github.com/ucsethiopia/social-stream). Clerk handles sign-in and organisations.
 
-> **Current scope:** this version is restricted to **UCS Ethiopia**: one organisation, `@ucsethiopia.com` sign-ins only, and everything pointing at the dev site **https://dev.ucsethiopia.com**. Use mock mode; don't run it against the live API, because publishing puts posts on the real website. Once the UCS flow passes end to end, Social Stream opens up to its intended multi-organisation use, where anyone can create and manage their own organisation, team and channels.
+> **Current scope:** UCS Ethiopia is the first organisation. Until launch, Clerk only accepts `@ucsethiopia.com` sign-ins, and UCS's website (Settings → Website) is the dev site **https://dev.ucsethiopia.com**. Use mock mode; don't run it against the live API, because publishing puts posts on the real website. At launch, sign-up opens so anyone can create and manage their own organisation, team and channels.
 
 ## Quick start (no backend needed)
 
@@ -14,14 +14,15 @@ cp .env.example .env.local
 npm run dev                  
 ```
 
-Mock mode uses UCS sample data and skips Clerk. Add one of these to any URL to see other states:
+Mock mode skips Clerk and signs you in to three sample organisations; switch between them from the top bar. Add one of these to any URL to see other states:
 
 | Query | Effect |
 |---|---|
+| `?mockOrg=entoto` | Opens a sample org where you're an editor (`ucs` and `lalibela` are admin; Lalibela is new and empty) |
 | `?mockScenario=empty` | No posts, channels or activity |
 | `?mockScenario=partial` | Every Telegram send fails, so publishing returns a 207 |
 | `?mockScenario=offline` | Every request fails |
-| `?mockRole=editor` | Signs you in as an editor instead of an admin |
+| `?mockRole=editor` | Signs you in as an editor in every org; `?mockRole=default` goes back to your own roles |
 
 `npm run build` refuses mock mode so a no-sign-in build can't ship by accident. For a deliberate demo deploy, set `ALLOW_MOCK_BUILD=true`.
 

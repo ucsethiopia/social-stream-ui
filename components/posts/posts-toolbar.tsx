@@ -50,7 +50,7 @@ export function PostsToolbar(p: PostsToolbarProps) {
         </ToggleGroup>
         <div className="relative ml-auto w-full sm:w-64">
           <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden />
-          <Input value={p.search} onChange={(e) => p.onSearch(e.target.value)} placeholder="Search titles" aria-label="Search posts" className="pl-9" />
+          <Input id="posts-search" name="search" type="search" value={p.search} onChange={(e) => p.onSearch(e.target.value)} placeholder="Search titles" aria-label="Search posts" className="pl-9" />
         </div>
         <ToggleGroup type="single" value={p.view} onValueChange={(v) => v && p.onView(v as ViewMode)} variant="outline" aria-label="Layout">
           <ToggleGroupItem value="grid" aria-label="Grid view">

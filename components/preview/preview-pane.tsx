@@ -31,6 +31,8 @@ const ORDER: PreviewId[] = ["website", ...CHANNEL_ORDER];
 
 interface PreviewPaneProps extends PreviewProps {
   selected: Set<ChannelId>;
+  /** Connected channels, or null when the viewer can't know (editors). */
+  connected: Set<ChannelId> | null;
   issues: Partial<Record<DestinationId, Issue[]>>;
 }
 
@@ -52,7 +54,7 @@ function IssueList({ issues }: { issues: Issue[] }) {
   );
 }
 
-export function PreviewPane({ selected, issues, ...props }: PreviewPaneProps) {
+export function PreviewPane({ selected, connected, issues, ...props }: PreviewPaneProps) {
   const [tab, setTab] = useState<PreviewId>("website");
   const [device, setDevice] = useState<Device>("desktop");
   const Preview = PREVIEWS[tab];
@@ -134,7 +136,9 @@ export function PreviewPane({ selected, issues, ...props }: PreviewPaneProps) {
         <motion.div layout transition={{ duration: 0.25, ease: [0.2, 0, 0, 1] }} className={cn("mx-auto w-full", device === "mobile" ? "max-w-[375px]" : "max-w-[540px]")}>
           {isOff && (
             <p className="mb-4 rounded-md border border-dashed border-white/20 px-3 py-2 text-[13px] text-white/70">
-              {getPlatform(tab).label} isn&apos;t selected. Turn it on above to publish there.
+              {connected && !connected.has(tab)
+                ? `${getPlatform(tab).label} isn't connected for this organisation yet. An admin can connect it in Channels.`
+                : `${getPlatform(tab).label} isn't selected. Turn it on above to publish there.`}
             </p>
           )}
           <AnimatePresence mode="wait" initial={false}>

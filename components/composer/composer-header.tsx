@@ -33,7 +33,7 @@ export function ComposerHeader(p: ComposerHeaderProps) {
         <DialogTitle className="truncate text-[15px] font-semibold">{p.title}</DialogTitle>
         {!p.published && !p.readOnly && <SaveStatus state={p.saveState} isNew={p.isNew} />}
         {p.published && <span className="text-[13px] text-muted-foreground">Edits update the website only</span>}
-        {p.readOnly && <span className="text-[13px] text-muted-foreground">View only, owned by another editor</span>}
+        {p.readOnly && <span className="text-[13px] text-muted-foreground">View only, written by someone else</span>}
       </div>
 
       <div className="flex shrink-0 items-center gap-2">
@@ -62,7 +62,7 @@ export function ComposerHeader(p: ComposerHeaderProps) {
         )}
         {p.published && !p.readOnly && (
           <Button onClick={p.onSave} disabled={!p.dirty || p.saving} className="max-md:h-11">
-            {p.saving ? "Saving" : <>Save<span className="max-sm:hidden"> changes</span></>}
+            {p.saving ? "Saving" : <span>Save<span className="max-sm:hidden"> changes</span></span>}
           </Button>
         )}
         {!p.published && !p.readOnly && (

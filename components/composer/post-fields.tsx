@@ -14,10 +14,11 @@ import { cn } from "@/lib/utils";
 
 const COUNTER_WARN_RATIO = 0.9;
 
-function Counter({ value, max }: { value: number; max?: number }) {
+function Counter({ value, max, label }: { value: number; max?: number; label?: string }) {
   const near = max !== undefined && value >= max * COUNTER_WARN_RATIO;
   return (
     <span className={cn("text-xs tabular-nums text-muted-foreground", near && "text-warning", max !== undefined && value > max && "text-destructive")}>
+      {label && `${label} `}
       {value.toLocaleString()}
       {max !== undefined && ` / ${max.toLocaleString()}`}
     </span>
@@ -55,13 +56,13 @@ export function PostFields({ form, readOnly }: { form: UseFormReturn<PostDraft>;
           id="post-subtitle"
           rows={1}
           readOnly={readOnly}
-          placeholder="Subtitle — one line that tells readers why it matters"
+          placeholder={readOnly ? "" : "Subtitle — one line that tells readers why it matters"}
           {...register("subtitle")}
           className={cn(bare, "text-[17px] leading-relaxed text-muted-foreground")}
         />
         <div className="flex gap-4">
-          <Counter value={title.length} max={TITLE_MAX} />
-          {subtitle.length > SUBTITLE_MAX * COUNTER_WARN_RATIO && <Counter value={subtitle.length} max={SUBTITLE_MAX} />}
+          <Counter label="Title" value={title.length} max={TITLE_MAX} />
+          {subtitle.length > SUBTITLE_MAX * COUNTER_WARN_RATIO && <Counter label="Subtitle" value={subtitle.length} max={SUBTITLE_MAX} />}
         </div>
       </div>
 
@@ -89,7 +90,7 @@ export function PostFields({ form, readOnly }: { form: UseFormReturn<PostDraft>;
               <TagCombobox id="post-main-tag" value={field.value} onChange={field.onChange} suggestions={mainTagOptions} placeholder="Choose a category" disabled={readOnly} />
             )}
           />
-          <p className="text-xs text-muted-foreground">Files the post under this category on the UCS website.</p>
+          <p className="text-xs text-muted-foreground">Files the post under this category on your website.</p>
         </div>
         <Controller
           control={control}

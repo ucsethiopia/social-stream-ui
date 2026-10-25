@@ -1,14 +1,15 @@
 "use client";
 
-// One session shape for the whole app, backed by Clerk in real mode and by a
-// fixed UCS admin in mock mode. Components use useSession(), never Clerk hooks
+// One session shape for the whole app, backed by Clerk in real mode and by the
+// active mock organisation (lib/api/mock/org-store.ts) in mock mode. Components use useSession(), never Clerk hooks
 // directly, so mock mode can run with no ClerkProvider at all.
 
 import { createContext, useContext, useMemo, useSyncExternalStore, type ReactNode } from "react";
 import { useAuth, useOrganization, useUser } from "@clerk/nextjs";
 import { config } from "@/lib/config";
-import { mockCompany } from "@/lib/api/mock/fixtures";
-import { me as mockMe } from "@/lib/api/mock/transport";
+import { mockUserFor } from "@/lib/api/mock/db";
+import { useActiveMockOrg } from "@/lib/api/mock/org-store";
+import type { MockOrg } from "@/lib/api/mock/orgs";
 
 export interface SessionUser {
   name: string;
@@ -63,24 +64,38 @@ export function ClerkSessionBridge({ children }: { children: ReactNode }) {
   return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;
 }
 
-const mockSession: Session = {
-  isLoaded: true,
-  isSignedIn: true,
-  orgId: mockCompany.clerk_org_id,
-  orgName: mockCompany.name,
-  orgImageUrl: "/brand/ucs-mark.png",
-  user: { name: mockMe.full_name ?? "UCS Admin", email: mockMe.email ?? "", imageUrl: null },
-  getToken: async () => "mock-token",
-  signOut: async () => {
-    window.location.reload();
-  },
-};
+function mockSessionFor(org: MockOrg): Session {
+  const me = mockUserFor(org);
+  return {
+    isLoaded: true,
+    isSignedIn: true,
+    orgId: org.orgId,
+    orgName: org.company.name,
+    orgImageUrl: org.imageUrl,
+    user: { name: me.full_name ?? "Admin", email: me.email ?? "", imageUrl: null },
+    getToken: async () => "mock-token",
+    signOut: async () => {
+      window.location.reload();
+    },
+  };
+}
 
 const noopSubscribe = () => () => undefined;
-const LOADING_SESSION: Session = { ...mockSession, isLoaded: false, isSignedIn: false, orgId: null, user: null };
+const LOADING_SESSION: Session = {
+  isLoaded: false,
+  isSignedIn: false,
+  orgId: null,
+  orgName: null,
+  orgImageUrl: null,
+  user: null,
+  getToken: async () => null,
+  signOut: async () => undefined,
+};
 
-/** The mock user depends on ?mockRole (client-only), so stay "loading" until hydrated to keep SSR and client identical. */
+/** The mock org and user depend on ?mockOrg and ?mockRole (client-only), so stay "loading" until hydrated to keep SSR and client identical. */
 export function MockSessionProvider({ children }: { children: ReactNode }) {
   const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false);
-  return <SessionContext.Provider value={hydrated ? mockSession : LOADING_SESSION}>{children}</SessionContext.Provider>;
+  const org = useActiveMockOrg();
+  const session = useMemo(() => mockSessionFor(org), [org]);
+  return <SessionContext.Provider value={hydrated ? session : LOADING_SESSION}>{children}</SessionContext.Provider>;
 }

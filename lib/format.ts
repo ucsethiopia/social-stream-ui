@@ -25,7 +25,7 @@ export function timeAgo(value: string | Date | null | undefined): string {
 }
 
 export function slugHandle(name: string): string {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 24) || "ucsethiopia";
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 24) || "organisation";
 }
 
 export function initials(name: string): string {

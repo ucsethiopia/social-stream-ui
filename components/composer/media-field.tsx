@@ -80,7 +80,7 @@ export function MediaField({ media, readOnly }: { media: Media; readOnly: boolea
         }}
       />
       {media.items.length === 0 ? (
-        dropzone
+        readOnly ? <p className="text-sm text-muted-foreground">No images.</p> : dropzone
       ) : (
         <div className="p-1">
           <Reorder.Group axis="x" values={media.items} onReorder={media.setOrder} className="flex flex-wrap items-start gap-3" as="div">

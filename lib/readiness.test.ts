@@ -22,6 +22,10 @@ describe("channelIssues blocks what the publishers would reject", () => {
   it("text-only LinkedIn is fine once the company website is set", () => {
     expect(hasErrors(channelIssues("linkedin", ctx([], "https://ucsethiopia.com")))).toBe(false);
   });
+
+  it("doesn't flag a missing website while the company is still loading", () => {
+    expect(hasErrors(channelIssues("linkedin", { ...ctx([]), companyWebsiteUrl: undefined }))).toBe(false);
+  });
 });
 
 describe("websiteIssues", () => {

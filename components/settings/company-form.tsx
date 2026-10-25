@@ -26,7 +26,8 @@ export function CompanyForm() {
 
   const submit = form.handleSubmit(async (values) => {
     try {
-      const saved = await update.mutateAsync({ name: values.name, website_url: values.website_url || null });
+      // An empty string clears the website; the API ignores null.
+      const saved = await update.mutateAsync({ name: values.name, website_url: values.website_url });
       reset({ name: saved.name, website_url: saved.website_url ?? "" });
       toast.success("Organisation updated");
     } catch (err) {
@@ -47,7 +48,7 @@ export function CompanyForm() {
         </div>
         <div className="flex flex-col gap-2">
           <Label htmlFor="company-url">Website</Label>
-          <Input id="company-url" readOnly={!isAdmin} placeholder="https://dev.ucsethiopia.com" aria-invalid={Boolean(errors.website_url)} {...form.register("website_url")} />
+          <Input id="company-url" readOnly={!isAdmin} placeholder="https://example.com" aria-invalid={Boolean(errors.website_url)} {...form.register("website_url")} />
           <p className={errors.website_url ? "text-xs text-destructive" : "text-xs text-muted-foreground"}>
             {errors.website_url?.message ?? "Lets this site load your news feed, and gives text-only LinkedIn posts a link."}
           </p>
