@@ -71,7 +71,7 @@ export function PostsToolbar(p: PostsToolbarProps) {
               onClick={() => p.onTag(t)}
               className={cn(
                 "h-7 rounded-full border px-3 text-[13px] transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
-                p.tag === t ? "border-primary bg-primary text-primary-foreground" : "text-muted-foreground hover:border-foreground/30 hover:text-foreground",
+                p.tag === t ? "border-brand/40 bg-brand-soft font-medium text-brand-ink" : "text-muted-foreground hover:border-foreground/30 hover:text-foreground",
               )}
             >
               {t ?? "Every tag"}

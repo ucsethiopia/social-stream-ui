@@ -41,11 +41,11 @@ function IssueList({ issues }: { issues: Issue[] }) {
   return (
     <ul className="mt-4 flex flex-col gap-1.5">
       {issues.map((issue) => (
-        <li key={issue.message} className="flex items-start gap-2 rounded-md bg-white/[0.06] px-3 py-2 text-[13px] text-white/85">
+        <li key={issue.message} className="flex items-start gap-2 rounded-lg bg-stage-foreground/[0.07] px-3 py-2 text-[13px] text-stage-foreground/90">
           {issue.level === "error" ? (
-            <AlertCircle className="mt-0.5 size-3.5 shrink-0 text-[oklch(0.75_0.16_25)]" aria-label="Blocks publishing" />
+            <AlertCircle className="mt-0.5 size-3.5 shrink-0 text-stage-danger" aria-label="Blocks publishing" />
           ) : (
-            <AlertTriangle className="mt-0.5 size-3.5 shrink-0 text-gold-400" aria-label="Heads up" />
+            <AlertTriangle className="mt-0.5 size-3.5 shrink-0 text-stage-warning" aria-label="Heads up" />
           )}
           {issue.message}
         </li>
@@ -79,8 +79,8 @@ export function PreviewPane({ selected, connected, issues, ...props }: PreviewPa
   };
 
   return (
-    <section aria-label="Preview" className="flex h-full min-h-0 flex-col bg-navy-950 text-white dark:bg-[oklch(0.14_0.03_255)]">
-      <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3 sm:px-6">
+    <section aria-label="Preview" className="dot-grid flex h-full min-h-0 flex-col bg-stage text-stage-foreground">
+      <div className="flex items-center gap-2 border-b border-stage-foreground/10 bg-stage/80 px-4 py-3 backdrop-blur-sm sm:px-6">
         <div role="tablist" aria-label="Preview platform" onKeyDown={onTabKey} className="-mx-1 flex min-w-0 gap-1 overflow-x-auto px-1">
           {ORDER.map((id) => {
             const p = getPlatform(id);
@@ -97,16 +97,16 @@ export function PreviewPane({ selected, connected, issues, ...props }: PreviewPa
                 tabIndex={tab === id ? 0 : -1}
                 onClick={() => setTab(id)}
                 className={cn(
-                  "relative flex h-8 shrink-0 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium transition-colors focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:outline-none",
-                  tab === id ? "bg-white text-navy-950" : "text-white/65 hover:bg-white/10 hover:text-white",
-                  !on && tab !== id && "text-white/55",
+                  "relative flex h-8 shrink-0 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium transition-colors focus-visible:ring-2 focus-visible:ring-mark-dot focus-visible:outline-none",
+                  tab === id ? "bg-stage-foreground text-stage" : "text-stage-foreground/70 hover:bg-stage-foreground/10 hover:text-stage-foreground",
+                  !on && tab !== id && "text-stage-foreground/55",
                 )}
               >
                 <PlatformIcon id={id} className={cn("size-3.5", tab === id && p.textClass)} />
                 <span className="max-sm:sr-only">{p.label}</span>
                 {on && list.length > 0 && (
                   <>
-                    <span aria-hidden className={cn("size-1.5 rounded-full", hasErrors(list) ? "bg-[oklch(0.7_0.18_25)]" : "bg-gold-400")} />
+                    <span aria-hidden className={cn("size-1.5 rounded-full", hasErrors(list) ? "bg-stage-danger" : "bg-stage-warning")} />
                     <span className="sr-only">
                       {hasErrors(list) ? ", blocked" : ""}, {list.length} {list.length === 1 ? "note" : "notes"}
                     </span>
@@ -120,13 +120,13 @@ export function PreviewPane({ selected, connected, issues, ...props }: PreviewPa
           type="single"
           value={device}
           onValueChange={(v) => v && setDevice(v as Device)}
-          className="ml-auto shrink-0 rounded-full bg-white/[0.07] p-0.5"
+          className="ml-auto shrink-0 rounded-full bg-stage-foreground/[0.08] p-0.5"
           aria-label="Preview width"
         >
-          <ToggleGroupItem value="desktop" aria-label="Desktop width" className="size-7 rounded-full text-white/60 data-[state=on]:bg-white/15 data-[state=on]:text-white">
+          <ToggleGroupItem value="desktop" aria-label="Desktop width" className="size-7 rounded-full text-stage-foreground/65 data-[state=on]:bg-stage-foreground/15 data-[state=on]:text-stage-foreground">
             <Monitor className="size-3.5" />
           </ToggleGroupItem>
-          <ToggleGroupItem value="mobile" aria-label="Phone width" className="size-7 rounded-full text-white/60 data-[state=on]:bg-white/15 data-[state=on]:text-white">
+          <ToggleGroupItem value="mobile" aria-label="Phone width" className="size-7 rounded-full text-stage-foreground/65 data-[state=on]:bg-stage-foreground/15 data-[state=on]:text-stage-foreground">
             <Smartphone className="size-3.5" />
           </ToggleGroupItem>
         </ToggleGroup>
@@ -135,7 +135,7 @@ export function PreviewPane({ selected, connected, issues, ...props }: PreviewPa
       <div id={panelId} role="tabpanel" aria-labelledby={tabId(tab)} className="min-h-0 flex-1 overflow-y-auto px-4 py-6 sm:px-8 sm:py-8">
         <motion.div layout transition={{ duration: 0.25, ease: [0.2, 0, 0, 1] }} className={cn("mx-auto w-full", device === "mobile" ? "max-w-[375px]" : "max-w-[540px]")}>
           {isOff && (
-            <p className="mb-4 rounded-md border border-dashed border-white/20 px-3 py-2 text-[13px] text-white/70">
+            <p className="mb-4 rounded-lg border border-dashed border-stage-foreground/25 px-3 py-2 text-[13px] text-stage-foreground/75">
               {connected && !connected.has(tab)
                 ? `${getPlatform(tab).label} isn't connected for this organisation yet. An admin can connect it in Channels.`
                 : `${getPlatform(tab).label} isn't selected. Turn it on above to publish there.`}

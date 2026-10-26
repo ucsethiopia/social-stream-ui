@@ -47,7 +47,7 @@ export function InviteDialog() {
       <DialogContent className="max-w-md">
         <form onSubmit={submit} className="flex flex-col gap-5">
           <DialogHeader>
-            <DialogTitle className="font-serif text-2xl">Add a team member</DialogTitle>
+            <DialogTitle className="font-display text-2xl font-medium tracking-[-0.01em]">Add a team member</DialogTitle>
             <DialogDescription>They need a Social Stream account first. Once added, they&apos;ll see this organisation when they sign in.</DialogDescription>
           </DialogHeader>
           <div className="flex flex-col gap-2">

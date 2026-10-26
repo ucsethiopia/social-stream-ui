@@ -83,7 +83,7 @@ function ConnectForm({ channel, connected, current, onDone }: { channel: Channel
         <span className={cn("grid size-11 place-items-center rounded-full text-white", platform.bgClass)}>
           <PlatformIcon id={channel} className="size-5" />
         </span>
-        <SheetTitle className="font-serif text-2xl">{connected ? `Update ${platform.label}` : `Connect ${platform.label}`}</SheetTitle>
+        <SheetTitle className="font-display text-2xl font-medium tracking-[-0.01em]">{connected ? `Update ${platform.label}` : `Connect ${platform.label}`}</SheetTitle>
         <SheetDescription>{connected ? "Saving replaces the stored credentials." : "Credentials are stored for your organisation and used only when you publish."}</SheetDescription>
       </SheetHeader>
 

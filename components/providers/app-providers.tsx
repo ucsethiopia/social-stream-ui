@@ -33,7 +33,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
   const Session = config.mock ? MockSessionProvider : ClerkSessionBridge;
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       <Session>
         <QueryClientProvider client={queryClient}>
           <ApiProvider>

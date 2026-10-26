@@ -2,8 +2,9 @@
 
 export const clerkAppearance = {
   variables: {
-    colorPrimary: "var(--primary)",
-    colorPrimaryForeground: "var(--primary-foreground)",
+    // Viridian, like every primary action in the app.
+    colorPrimary: "var(--brand)",
+    colorPrimaryForeground: "var(--brand-foreground)",
     colorBackground: "var(--card)",
     colorForeground: "var(--foreground)",
     colorMutedForeground: "var(--muted-foreground)",
@@ -15,12 +16,12 @@ export const clerkAppearance = {
     colorDanger: "var(--destructive)",
     colorSuccess: "var(--success)",
     colorWarning: "var(--warning)",
-    fontFamily: "var(--font-source-sans), system-ui, sans-serif",
+    fontFamily: "var(--font-geist), system-ui, sans-serif",
     borderRadius: "0.5rem",
   },
   elements: {
-    card: "shadow-none border border-border",
-    headerTitle: "font-serif text-2xl",
+    card: "shadow-none border border-border rounded-xl",
+    headerTitle: "font-display text-2xl font-medium",
     formButtonPrimary: "normal-case text-sm font-semibold",
   },
 } as const;

@@ -13,7 +13,12 @@ export function OrgSwitcher() {
       hidePersonal
       afterCreateOrganizationUrl="/"
       afterSelectOrganizationUrl="/"
-      appearance={{ elements: { organizationSwitcherTrigger: "h-9 rounded-md px-2 text-sm" } }}
+      appearance={{
+        elements: {
+          rootBox: "w-full",
+          organizationSwitcherTrigger: "h-11 w-full justify-between rounded-lg border border-border bg-card px-2.5 text-sm shadow-soft",
+        },
+      }}
     />
   );
 }

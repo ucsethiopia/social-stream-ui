@@ -3,19 +3,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ─── Brand scale (shared with ucs-ui) ─────────────────────────────────────── */
+/* ─── Social Stream: porcelain and viridian ───────────────────────────────────
+   Viridian means "live": sent, connected, published. Use it for the primary
+   action and for live state, not as decoration. */
 :root {
-  --navy-950: oklch(0.18 0.04 255);
-  --navy-900: oklch(0.22 0.045 255);
-  --navy-800: oklch(0.28 0.05 255);
-  --navy-700: oklch(0.35 0.055 255);
-  --navy-600: oklch(0.45 0.06 255);
-  --gold-600: oklch(0.65 0.15 85);
-  --gold-500: oklch(0.75 0.14 85);
-  --gold-400: oklch(0.82 0.12 85);
+  /* The product mark is the same in both themes (app/icon.svg uses these values too) */
+  --mark: #0e7c66;
+  --mark-dot: #9fe3cc;
+  /* Notes on the preview stage, which is dark in both themes */
+  --stage-warning: #e8a93a;
+  --stage-danger: #f0786b;
 
   /* Platform brand colors — used only inside platform chips/icons */
-  --platform-website: var(--gold-600);
+  --platform-website: var(--brand);
   --platform-linkedin: #0a66c2;
   --platform-telegram: #229ed9;
   --platform-facebook: #1877f2;
@@ -26,126 +26,126 @@
   --platform-youtube: #ff0033;
 }
 
-/* ─── Light (default) ──────────────────────────────────────────────────────── */
+/* ─── Light ────────────────────────────────────────────────────────────────── */
 :root {
   color-scheme: light;
-  --background: oklch(0.985 0.003 90);
-  --foreground: var(--navy-950);
-  --card: oklch(1 0 0);
-  --card-foreground: var(--navy-950);
-  --popover: oklch(1 0 0);
-  --popover-foreground: var(--navy-950);
-  --primary: var(--navy-900);
-  --primary-foreground: oklch(0.99 0.002 90);
-  --secondary: oklch(0.965 0.006 90);
-  --secondary-foreground: var(--navy-900);
-  --muted: oklch(0.96 0.005 90);
-  --muted-foreground: oklch(0.47 0.02 255);
-  /* shadcn uses `accent` for hover surfaces; gold lives in `brand` */
-  --accent: oklch(0.955 0.008 255);
-  --accent-foreground: var(--navy-900);
-  --brand: var(--gold-500);
-  --brand-strong: var(--gold-600);
-  --brand-foreground: var(--navy-950);
-  --brand-soft: oklch(0.95 0.045 85);
-  /* Gold dark enough for small text on white (≥ 4.5:1) */
-  --brand-ink: oklch(0.52 0.11 80);
-  --destructive: oklch(0.53 0.2 27.3);
-  --destructive-soft: oklch(0.96 0.03 27);
-  --success: oklch(0.5 0.12 155);
-  --success-soft: oklch(0.955 0.04 155);
-  --warning: oklch(0.62 0.14 65);
-  --warning-soft: oklch(0.96 0.05 80);
-  --border: oklch(0.91 0.008 90);
-  --input: oklch(0.9 0.008 90);
-  /* Navy, not gold: gold rings fall below 3:1 on white (WCAG 1.4.11). Dark mode keeps gold. */
-  --ring: var(--navy-900);
-  --surface-sunken: oklch(0.97 0.004 90);
+  --background: #f4f6f5;
+  --foreground: #121816;
+  --card: #ffffff;
+  --card-foreground: #121816;
+  --popover: #ffffff;
+  --popover-foreground: #121816;
+  --primary: #121816;
+  --primary-foreground: #f4f6f5;
+  --secondary: #e9eeec;
+  --secondary-foreground: #121816;
+  --muted: #edf1ef;
+  --muted-foreground: #5e6a66;
+  /* shadcn uses `accent` for hover surfaces; viridian lives in `brand` */
+  --accent: #e9eeec;
+  --accent-foreground: #121816;
+  --brand: #0e7c66;
+  --brand-strong: #0b6b58;
+  --brand-foreground: #ffffff;
+  --brand-soft: #ddf1ea;
+  /* Viridian dark enough for small text on white and on brand-soft (≥ 4.5:1) */
+  --brand-ink: #0b6b58;
+  --destructive: #c2362f;
+  --destructive-soft: #fbe9e7;
+  --success: #0b6b58;
+  --success-soft: #ddf1ea;
+  --warning: #a86200;
+  --warning-soft: #fbf0dc;
+  --border: #e1e6e3;
+  --input: #d6ddd9;
+  --ring: #0e7c66;
+  --surface-sunken: #eef2f0;
+  /* The preview stage: dark in both themes, so platform previews sit on neutral ground */
+  --stage: #0f1a17;
+  --stage-foreground: #e6ece9;
+  --scrim: rgb(15 26 23 / 0.72);
   --radius: 0.5rem;
-  --shadow-color: 255 30% 15%;
+  --shadow-color: 155 15% 8%;
 
-  --sidebar: oklch(0.975 0.004 90);
-  --sidebar-foreground: var(--navy-950);
-  --sidebar-primary: var(--navy-900);
-  --sidebar-primary-foreground: oklch(0.99 0.002 90);
-  --sidebar-accent: oklch(0.945 0.008 255);
-  --sidebar-accent-foreground: var(--navy-900);
-  --sidebar-border: oklch(0.91 0.008 90);
-  --sidebar-ring: var(--navy-900);
+  --sidebar: #eef2f0;
+  --sidebar-foreground: #121816;
+  --sidebar-primary: #0e7c66;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ddf1ea;
+  --sidebar-accent-foreground: #121816;
+  --sidebar-border: #e1e6e3;
+  --sidebar-ring: #0e7c66;
 
-  --chart-1: var(--navy-900);
-  --chart-2: var(--gold-500);
-  --chart-3: var(--navy-600);
-  --chart-4: var(--gold-400);
-  --chart-5: var(--navy-700);
+  --chart-1: #0e7c66;
+  --chart-2: #3cc7a2;
+  --chart-3: #5e6a66;
+  --chart-4: #9fe3cc;
+  --chart-5: #121816;
 }
 
-/* ─── Dark (UCS navy) ──────────────────────────────────────────────────────── */
+/* ─── Dark (spruce night) ──────────────────────────────────────────────────── */
 .dark {
   color-scheme: dark;
-  --background: var(--navy-950);
-  --foreground: oklch(0.97 0.005 90);
-  --card: oklch(0.205 0.042 255);
-  --card-foreground: oklch(0.97 0.005 90);
-  --popover: var(--navy-900);
-  --popover-foreground: oklch(0.97 0.005 90);
-  --primary: oklch(0.97 0.005 90);
-  --primary-foreground: var(--navy-950);
-  --secondary: var(--navy-800);
-  --secondary-foreground: oklch(0.97 0.005 90);
-  --muted: var(--navy-800);
-  --muted-foreground: oklch(0.72 0.02 255);
-  --accent: oklch(0.27 0.05 255);
-  --accent-foreground: oklch(0.97 0.005 90);
-  --brand: var(--gold-500);
-  --brand-strong: var(--gold-400);
-  --brand-foreground: var(--navy-950);
-  --brand-soft: oklch(0.3 0.06 85 / 0.45);
-  --brand-ink: var(--gold-400);
-  --destructive: oklch(0.64 0.2 25.3);
-  --destructive-soft: oklch(0.3 0.08 25 / 0.5);
-  --success: oklch(0.72 0.14 155);
-  --success-soft: oklch(0.3 0.06 155 / 0.5);
-  --warning: oklch(0.8 0.14 75);
-  --warning-soft: oklch(0.32 0.06 75 / 0.5);
-  --border: oklch(0.3 0.045 255);
-  --input: oklch(0.32 0.045 255);
-  --ring: var(--gold-500);
-  --surface-sunken: oklch(0.16 0.035 255);
-  --shadow-color: 255 50% 3%;
+  --background: #0d1513;
+  --foreground: #e6ece9;
+  --card: #141e1b;
+  --card-foreground: #e6ece9;
+  --popover: #17221f;
+  --popover-foreground: #e6ece9;
+  --primary: #e6ece9;
+  --primary-foreground: #0d1513;
+  --secondary: #1b2724;
+  --secondary-foreground: #e6ece9;
+  --muted: #18231f;
+  --muted-foreground: #8d9a95;
+  --accent: #1d2a26;
+  --accent-foreground: #e6ece9;
+  --brand: #3cc7a2;
+  --brand-strong: #5fd6b6;
+  --brand-foreground: #0d1513;
+  --brand-soft: #133a31;
+  --brand-ink: #5fd6b6;
+  --destructive: #f0786b;
+  --destructive-soft: rgb(240 120 107 / 0.14);
+  --success: #3cc7a2;
+  --success-soft: #133a31;
+  --warning: #e8a93a;
+  --warning-soft: rgb(232 169 58 / 0.14);
+  --border: #22302c;
+  --input: #2a3934;
+  --ring: #3cc7a2;
+  --surface-sunken: #0a110f;
+  --stage: #0a100e;
+  --stage-foreground: #e6ece9;
+  --scrim: rgb(5 10 9 / 0.72);
+  --shadow-color: 160 40% 2%;
 
-  --sidebar: oklch(0.165 0.037 255);
-  --sidebar-foreground: oklch(0.97 0.005 90);
-  --sidebar-primary: var(--gold-500);
-  --sidebar-primary-foreground: var(--navy-950);
-  --sidebar-accent: var(--navy-800);
-  --sidebar-accent-foreground: oklch(0.97 0.005 90);
-  --sidebar-border: oklch(0.27 0.045 255);
-  --sidebar-ring: var(--gold-500);
+  --sidebar: #0f1816;
+  --sidebar-foreground: #e6ece9;
+  --sidebar-primary: #3cc7a2;
+  --sidebar-primary-foreground: #0d1513;
+  --sidebar-accent: #133a31;
+  --sidebar-accent-foreground: #e6ece9;
+  --sidebar-border: #1e2b27;
+  --sidebar-ring: #3cc7a2;
 
   --platform-x: #e7e9ea;
   --platform-threads: #f3f5f7;
 
-  --chart-1: var(--gold-400);
-  --chart-2: oklch(0.7 0.12 230);
-  --chart-3: var(--gold-500);
-  --chart-4: oklch(0.6 0.1 200);
-  --chart-5: var(--gold-600);
+  --chart-1: #3cc7a2;
+  --chart-2: #9fe3cc;
+  --chart-3: #8d9a95;
+  --chart-4: #0e7c66;
+  --chart-5: #e6ece9;
 }
 
 @theme inline {
-  --font-sans: var(--font-source-sans), "Source Sans 3", system-ui, sans-serif;
-  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-geist), "Geist", system-ui, sans-serif;
+  /* Headlines: a modern news serif. Body and UI stay in Geist. */
+  --font-display: var(--font-newsreader), "Newsreader", Georgia, serif;
+  /* Only for the website preview, so it reads as someone's site rather than the app */
+  --font-serif: "Iowan Old Style", Charter, Georgia, serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
-
-  --color-navy-950: var(--navy-950);
-  --color-navy-900: var(--navy-900);
-  --color-navy-800: var(--navy-800);
-  --color-navy-700: var(--navy-700);
-  --color-navy-600: var(--navy-600);
-  --color-gold-600: var(--gold-600);
-  --color-gold-500: var(--gold-500);
-  --color-gold-400: var(--gold-400);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -176,6 +176,13 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-surface-sunken: var(--surface-sunken);
+  --color-stage: var(--stage);
+  --color-stage-foreground: var(--stage-foreground);
+  --color-scrim: var(--scrim);
+  --color-mark: var(--mark);
+  --color-mark-dot: var(--mark-dot);
+  --color-stage-warning: var(--stage-warning);
+  --color-stage-danger: var(--stage-danger);
 
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -202,14 +209,21 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
+  /* Controls 8px, surfaces 14px, sheets and the composer 20px */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
 
-  --shadow-soft: 0 1px 2px hsl(var(--shadow-color) / 0.06), 0 4px 12px -2px hsl(var(--shadow-color) / 0.08);
-  --shadow-lift: 0 2px 4px hsl(var(--shadow-color) / 0.06), 0 16px 40px -8px hsl(var(--shadow-color) / 0.22);
+  --shadow-soft: 0 1px 2px hsl(var(--shadow-color) / 0.05), 0 3px 10px -2px hsl(var(--shadow-color) / 0.06);
+  --shadow-lift: 0 2px 4px hsl(var(--shadow-color) / 0.05), 0 18px 44px -10px hsl(var(--shadow-color) / 0.2);
+}
+
+/* The preview stage's light-table grid. */
+@utility dot-grid {
+  background-image: radial-gradient(color-mix(in oklab, var(--stage-foreground) 11%, transparent) 1px, transparent 1.2px);
+  background-size: 18px 18px;
 }
 
 @layer base {
@@ -225,8 +239,13 @@
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "kern", "liga";
   }
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.015em;
+  }
   ::selection {
-    background: color-mix(in oklch, var(--gold-500) 35%, transparent);
+    background: color-mix(in oklab, var(--brand) 28%, transparent);
   }
 }
 

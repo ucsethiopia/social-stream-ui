@@ -5,7 +5,7 @@ export function BrandMark({ className, compact = false }: { className?: string; 
   return (
     <span className={cn("flex items-center gap-2.5", className)}>
       <ProductMark />
-      {!compact && <span className="font-serif text-[17px] leading-none font-semibold tracking-tight">Social Stream</span>}
+      {!compact && <span className="text-[16px] leading-none font-semibold tracking-[-0.02em]">Social Stream</span>}
     </span>
   );
 }

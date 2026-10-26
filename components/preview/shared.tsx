@@ -40,7 +40,7 @@ export function OrgAvatar({ src, name, className }: { src: string | null; name: 
   return src ? (
     <RemoteImage src={src} alt="" className={cn("shrink-0 bg-white object-contain p-0.5", className)} />
   ) : (
-    <span className={cn("grid shrink-0 place-items-center bg-[#1a2744] font-semibold text-white", className)}>{initials(name)}</span>
+    <span className={cn("grid shrink-0 place-items-center bg-[#33413c] font-semibold text-white", className)}>{initials(name)}</span>
   );
 }
 

@@ -26,7 +26,7 @@ export function RecentDispatches() {
   return (
     <section aria-labelledby="dispatch-heading" className="flex flex-col gap-3">
       <div className="flex items-baseline justify-between">
-        <h2 id="dispatch-heading" className="text-base font-semibold">Recent deliveries</h2>
+        <h2 id="dispatch-heading" className="text-[15px] font-semibold">Recent deliveries</h2>
         <Link href="/activity" className="text-sm text-muted-foreground hover:text-foreground">Activity</Link>
       </div>
       {isPending ? (

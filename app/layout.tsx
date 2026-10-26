@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { Geist, Newsreader } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { ReactNode } from "react";
 import { AppProviders } from "@/components/providers/app-providers";
@@ -7,8 +7,9 @@ import { clerkAppearance } from "@/lib/auth/clerk-appearance";
 import { config } from "@/lib/config";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({ subsets: ["latin"], variable: "--font-source-sans", display: "swap" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+// Headlines only. The opsz axis sharpens the serif at display sizes.
+const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", axes: ["opsz"], display: "swap" });
 
 export const metadata: Metadata = {
   title: { default: "Social Stream", template: "%s · Social Stream" },
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [{ color: "#1a2744" }],
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f6f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d1513" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -33,7 +37,7 @@ function MaybeClerk({ children }: { children: ReactNode }) {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${sourceSans.variable} ${playfair.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${geist.variable} ${newsreader.variable}`}>
       <body className="min-h-dvh">
         <MaybeClerk>
           <AppProviders>{children}</AppProviders>

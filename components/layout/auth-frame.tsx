@@ -1,45 +1,32 @@
-import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { BrandMark } from "@/components/layout/brand-mark";
-import { PlatformIcon } from "@/components/shared/platform-icon";
+import { Fanout } from "@/components/marketing/fanout";
 import { config } from "@/lib/config";
-import { CHANNEL_ORDER, type DestinationId } from "@/lib/platforms";
 
-const DESTINATIONS: DestinationId[] = ["website", ...CHANNEL_ORDER];
-
-/** Split screen for sign-in, sign-up and onboarding: brand story left, task right. */
+/** Split screen for sign-in, sign-up and onboarding: the product on the left, the task on the right. */
 export function AuthFrame({ children, title, subtitle }: { children: ReactNode; title: string; subtitle: string }) {
   const domains = config.allowedEmailDomains;
   return (
-    <div className="grid min-h-dvh lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
-      <aside className="relative hidden overflow-hidden bg-navy-950 text-white lg:block">
-        <Image src="/brand/addis-skyline.jpg" alt="" fill priority sizes="50vw" className="object-cover opacity-55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/65 to-navy-950/15" />
-        <div className="relative flex h-full flex-col justify-between p-12">
-          <span className="[&_span]:text-white">
-            <BrandMark />
-          </span>
-          <div className="max-w-md">
-            <p className="font-serif text-[44px] leading-[1.08] font-semibold text-balance">One story, told everywhere your clients read.</p>
-            <p className="mt-5 text-[17px] leading-relaxed text-white/70">
-              Write a post once and publish it to your website and your social channels, with a preview of each before it goes out.
-            </p>
-            <ul className="mt-8 flex gap-2" aria-label="Destinations">
-              {DESTINATIONS.map((id) => (
-                <li key={id} className="grid size-10 place-items-center rounded-full bg-white/10 backdrop-blur-sm">
-                  <PlatformIcon id={id} className="size-4" />
-                </li>
-              ))}
-            </ul>
-          </div>
+    <div className="grid min-h-dvh lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+      <aside className="dot-grid relative hidden flex-col justify-between gap-10 overflow-hidden bg-stage p-12 text-stage-foreground lg:flex">
+        <Link href="/welcome" className="self-start rounded-md focus-visible:ring-2 focus-visible:ring-mark-dot focus-visible:outline-none">
+          <BrandMark />
+        </Link>
+        <Fanout animate={false} className="mx-auto max-w-[620px]" />
+        <div className="max-w-md">
+          <p className="font-display text-[32px] leading-[1.08] font-medium tracking-[-0.02em] text-balance">Write it once. Publish it everywhere.</p>
+          <p className="mt-3 text-[15px] leading-relaxed text-stage-foreground/70">
+            Your website and every social channel, with a true preview of each before it goes out.
+          </p>
         </div>
       </aside>
       <main className="flex flex-col items-center justify-center gap-8 px-5 py-12">
-        <div className="lg:hidden">
+        <Link href="/welcome" className="rounded-md focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none lg:hidden">
           <BrandMark />
-        </div>
+        </Link>
         <div className="w-full max-w-sm text-center">
-          <h1 className="font-serif text-3xl font-semibold">{title}</h1>
+          <h1 className="font-display text-[28px] font-medium tracking-[-0.015em]">{title}</h1>
           <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>
         </div>
         {children}

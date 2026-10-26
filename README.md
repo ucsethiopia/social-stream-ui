@@ -14,7 +14,7 @@ cp .env.example .env.local
 npm run dev                  
 ```
 
-Mock mode skips Clerk and signs you in to three sample organisations; switch between them from the top bar. Add one of these to any URL to see other states:
+Mock mode skips Clerk and signs you in to three sample organisations; switch between them from the org switcher at the top of the sidebar. Add one of these to any URL to see other states:
 
 | Query | Effect |
 |---|---|

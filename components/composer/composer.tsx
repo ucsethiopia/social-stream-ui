@@ -20,7 +20,7 @@ function ComposerLoading() {
         <Skeleton className="h-10 w-3/4" />
         <Skeleton className="h-48 w-full" />
       </div>
-      <div className="hidden bg-navy-950 lg:block" />
+      <div className="dot-grid hidden bg-stage lg:block" />
     </div>
   );
 }

@@ -12,7 +12,7 @@ export function MobileComposeButton() {
       type="button"
       onClick={openNew}
       aria-label="New post"
-      className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-30 grid size-14 place-items-center rounded-full bg-brand text-brand-foreground shadow-lift transition-transform active:scale-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none lg:hidden"
+      className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-30 grid size-14 place-items-center rounded-2xl bg-brand text-brand-foreground shadow-lift transition-transform active:scale-95 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none lg:hidden"
     >
       <PenLine className="size-5" />
     </button>

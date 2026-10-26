@@ -47,15 +47,15 @@ export function PostCard({ post, author, onOpen, onPrefetch }: PostCardProps) {
           )}
         </div>
         {images.length > 1 && (
-          <span className="absolute right-3 bottom-3 inline-flex h-6 items-center gap-1 rounded-full bg-navy-950/70 px-2 text-xs font-medium text-white backdrop-blur-sm">
+          <span className="absolute right-3 bottom-3 inline-flex h-6 items-center gap-1 rounded-full bg-scrim px-2 text-xs font-medium text-white backdrop-blur-sm">
             <Images className="size-3" aria-hidden /> {images.length}
             <span className="sr-only"> images</span>
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col p-4">
+      <div className="flex flex-1 flex-col p-4 pt-3.5">
         {mainTag && <span className="mb-1.5 text-xs font-semibold text-brand-ink">{mainTag}</span>}
-        <h2 className="line-clamp-2 font-serif text-[17px] leading-snug font-semibold text-balance">
+        <h2 className="line-clamp-2 font-display text-[19px] leading-snug font-medium text-balance">
           <button
             type="button"
             onClick={() => onOpen(post.id)}

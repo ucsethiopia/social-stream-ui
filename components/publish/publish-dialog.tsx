@@ -79,7 +79,7 @@ export function PublishDialog({ open, onOpenChange, state: s, onDone }: PublishD
         onCloseAutoFocus={focus.restore}
       >
         <DialogHeader>
-          <DialogTitle className="font-serif text-2xl">{title}</DialogTitle>
+          <DialogTitle className="font-display text-2xl font-medium tracking-[-0.01em]">{title}</DialogTitle>
           <DialogDescription>
             {phase === "done"
               ? failures

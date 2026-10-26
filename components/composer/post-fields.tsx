@@ -49,7 +49,7 @@ export function PostFields({ form, readOnly }: { form: UseFormReturn<PostDraft>;
           placeholder="Headline"
           {...register("title")}
           aria-invalid={Boolean(formState.errors.title)}
-          className={cn(bare, "min-h-10 font-serif text-[28px] leading-[1.2] font-semibold tracking-tight text-balance sm:text-[32px]")}
+          className={cn(bare, "min-h-10 font-display text-[28px] leading-[1.15] font-medium tracking-[-0.015em] text-balance sm:text-[32px]")}
         />
         <label className="sr-only" htmlFor="post-subtitle">Subtitle</label>
         <textarea
@@ -76,7 +76,7 @@ export function PostFields({ form, readOnly }: { form: UseFormReturn<PostDraft>;
           readOnly={readOnly}
           placeholder="Write the full story. The website shows all of it; Instagram and Facebook show the first 200 characters."
           {...register("body")}
-          className={cn(bare, "min-h-48 rounded-lg border bg-background px-4 py-3 text-[15px] leading-[1.65] transition-shadow focus:border-ring focus:ring-[3px] focus:ring-ring/30")}
+          className={cn(bare, "min-h-48 rounded-lg border bg-card px-4 py-3 text-[15px] leading-[1.65] transition-shadow focus:border-ring focus:ring-[3px] focus:ring-ring/30")}
         />
       </div>
 
@@ -96,7 +96,7 @@ export function PostFields({ form, readOnly }: { form: UseFormReturn<PostDraft>;
           control={control}
           name="highlight"
           render={({ field }) => (
-            <label className="flex cursor-pointer items-start justify-between gap-4 rounded-lg border bg-background p-3 sm:mt-7 has-[:disabled]:cursor-default has-[:disabled]:opacity-60">
+            <label className="flex cursor-pointer items-start justify-between gap-4 rounded-lg border bg-card p-3 sm:mt-7 has-[:disabled]:cursor-default has-[:disabled]:opacity-60">
               <span className="flex flex-col gap-0.5">
                 <span className="text-sm font-medium">Feature in Highlights</span>
                 <span className="text-xs text-muted-foreground">Pins it to the spotlight on the website news page.</span>

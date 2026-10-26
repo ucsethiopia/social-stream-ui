@@ -47,7 +47,7 @@ function Chip({ platform, on, locked, issues, onClick, disabled, note }: {
           className={cn(
             "relative inline-flex h-11 items-center gap-2 rounded-full border pr-3.5 pl-1.5 text-[13px] font-medium transition-colors md:h-9 md:pl-1",
             "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
-            on ? "border-foreground/15 bg-card text-foreground shadow-soft" : "border-dashed bg-transparent text-muted-foreground hover:border-solid hover:text-foreground",
+            on ? "border-brand/35 bg-brand-soft text-foreground" : "border-dashed border-input bg-transparent text-muted-foreground hover:border-solid hover:border-foreground/30 hover:text-foreground",
             locked && "cursor-default",
             disabled && !locked && "opacity-50",
           )}
@@ -55,14 +55,14 @@ function Chip({ platform, on, locked, issues, onClick, disabled, note }: {
           <span
             className={cn(
               "grid size-7 place-items-center rounded-full transition-colors",
-              on ? cn(platform.bgClass, "text-white dark:text-navy-950") : "bg-muted text-muted-foreground",
+              on ? cn(platform.bgClass, "text-white") : "bg-muted text-muted-foreground",
               on && platform.id === "website" && "text-brand-foreground",
             )}
           >
             <PlatformIcon id={platform.id} className="size-3.5" />
           </span>
           {platform.label}
-          {locked ? <Lock className="size-3 text-muted-foreground" /> : on ? <Check className="size-3.5 text-success" /> : null}
+          {locked ? <Lock className="size-3 text-muted-foreground" /> : on ? <Check className="size-3.5 text-brand-ink" /> : null}
           <IssueDot issues={on ? issues : undefined} />
         </button>
       </TooltipTrigger>
