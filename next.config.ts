@@ -31,9 +31,34 @@ function assertClerkKeys(phase: string) {
   }
 }
 
+// lib/config.ts falls back to the local API when NEXT_PUBLIC_SOCIAL_STREAM_API_URL is missing.
+// That's right on a laptop, but a deployed build would then call the visitor's own localhost
+// and fail with "Can't reach Social Stream". Vercel sets VERCEL=1 on its builds.
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "0.0.0.0", "[::1]"]);
+
+function assertDeployedApiUrl(phase: string) {
+  const mock = process.env.NEXT_PUBLIC_API_MOCK?.trim().toLowerCase() === "true";
+  if (phase !== PHASE_PRODUCTION_BUILD || mock || process.env.VERCEL !== "1") return;
+  const raw = process.env.NEXT_PUBLIC_SOCIAL_STREAM_API_URL?.trim();
+  let host: string | undefined;
+  try {
+    host = raw ? new URL(raw).hostname : undefined;
+  } catch {
+    host = undefined;
+  }
+  if (!host || LOCAL_HOSTS.has(host)) {
+    throw new Error(
+      `NEXT_PUBLIC_SOCIAL_STREAM_API_URL is ${raw ? `"${raw}"` : "not set"} for this ${process.env.VERCEL_ENV ?? "Vercel"} build, ` +
+        "so the deployed app would call localhost. Set the API URL for this environment, or NEXT_PUBLIC_API_MOCK=true " +
+        "with ALLOW_MOCK_BUILD=true for a demo build, then redeploy.",
+    );
+  }
+}
+
 export default function config(phase: string): NextConfig {
   assertNoAccidentalMockBuild(phase);
   assertClerkKeys(phase);
+  assertDeployedApiUrl(phase);
   return {
     turbopack: {
       rules: {

@@ -22,7 +22,7 @@ export const config = {
   localSafeMode: flag(process.env.NEXT_PUBLIC_LOCAL_SAFE_MODE),
   /** Optional Clerk JWT template name passed to getToken({ template }). */
   jwtTemplate: process.env.NEXT_PUBLIC_CLERK_JWT_TEMPLATE?.trim() || undefined,
-  /** Sign-in hint only — Clerk enforces the actual restriction. */
+  /** Email domains that may use the app: the sign-in hint, and the gate in proxy.ts. Empty means anyone (open sign-up). */
   allowedEmailDomains: list(process.env.NEXT_PUBLIC_ALLOWED_EMAIL_DOMAINS),
   /** Flip on once the backend accepts `hashtags: string[]` on news (see CLAUDE.md → Backend requests). */
   hashtagsField: flag(process.env.NEXT_PUBLIC_API_HASHTAGS_FIELD),
