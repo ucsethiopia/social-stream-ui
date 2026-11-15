@@ -7,7 +7,7 @@ export function MockAuthNotice() {
       <p className="text-sm leading-relaxed text-muted-foreground">
         Mock mode is on, so there&apos;s no sign-in. You&apos;re signed in with three sample organisations; switch between them from the sidebar.
       </p>
-      <Button asChild className="mt-5 w-full bg-brand font-semibold text-brand-foreground hover:bg-brand-strong">
+      <Button asChild className="mt-5 w-full">
         <Link href="/">Open Social Stream</Link>
       </Button>
       <Button asChild variant="ghost" className="mt-2 w-full">

@@ -23,7 +23,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [{ color: "#474329" }],
+  // Soft Sand: the light theme is the default, so the browser bar matches the light page
+  themeColor: [{ color: "#f0e5db" }],
   width: "device-width",
   initialScale: 1,
 };

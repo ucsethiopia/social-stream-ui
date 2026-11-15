@@ -35,9 +35,10 @@
   --platform-youtube: #ff0033;
 }
 
-/* ─── Light ────────────────────────────────────────────────────────────────── */
+/* ─── Light (default) ──────────────────────────────────────────────────────── */
 :root {
-  color-scheme: light;
+  /* "only" stops browsers' automatic dark mode from repainting the light theme; .dark below opts in properly */
+  color-scheme: only light;
   --background: var(--sand-100);
   --foreground: var(--olive-700);
   --card: var(--sand-50);
@@ -244,15 +245,15 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  /* Controls 8px, surfaces 14px, sheets and the composer 20px */
+  /* Controls 8px, surfaces 12px, sheets and the composer 16px */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 6px);
-  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
 
-  --shadow-soft: 0 1px 2px hsl(var(--shadow-color) / 0.05), 0 3px 10px -2px hsl(var(--shadow-color) / 0.06);
-  --shadow-lift: 0 2px 4px hsl(var(--shadow-color) / 0.05), 0 18px 44px -10px hsl(var(--shadow-color) / 0.2);
+  --shadow-soft: 0 1px 2px hsl(var(--shadow-color) / 0.06), 0 4px 12px -2px hsl(var(--shadow-color) / 0.08);
+  --shadow-lift: 0 2px 4px hsl(var(--shadow-color) / 0.06), 0 16px 40px -8px hsl(var(--shadow-color) / 0.22);
 }
 
 /* The preview stage's light-table grid. */
@@ -273,11 +274,6 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "kern", "liga";
-  }
-  h1,
-  h2,
-  h3 {
-    letter-spacing: -0.015em;
   }
   /* Small text reads better with a touch of positive tracking */
   kbd {

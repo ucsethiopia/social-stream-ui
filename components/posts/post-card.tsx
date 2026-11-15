@@ -53,9 +53,9 @@ export function PostCard({ post, author, onOpen, onPrefetch }: PostCardProps) {
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col p-4 pt-3.5">
+      <div className="flex flex-1 flex-col p-4">
         {mainTag && <span className="mb-1.5 text-xs font-semibold text-brand-ink">{mainTag}</span>}
-        <h2 className="line-clamp-2 font-display text-[19px] leading-snug font-medium text-balance">
+        <h2 className="line-clamp-2 font-display text-[17px] leading-snug font-semibold text-balance">
           <button
             type="button"
             onClick={() => onOpen(post.id)}

@@ -16,7 +16,7 @@ export function AuthFrame({ children, title, subtitle }: { children: ReactNode; 
         </Link>
         <Fanout animate={false} className="mx-auto max-w-[620px]" />
         <div className="max-w-md">
-          <p className="font-display text-[32px] leading-[1.08] font-medium tracking-[-0.02em] text-balance">
+          <p className="font-display text-[32px] leading-[1.08] font-semibold text-balance">
             Write it once. Publish it{" "}
             <span className="font-script text-[1.3em] leading-none font-semibold tracking-normal text-clay-400">everywhere</span>.
           </p>

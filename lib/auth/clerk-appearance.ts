@@ -20,7 +20,7 @@ export const clerkAppearance = {
     borderRadius: "0.5rem",
   },
   elements: {
-    card: "shadow-none border border-border rounded-xl",
+    card: "shadow-none border border-border",
     headerTitle: "font-display text-2xl font-semibold",
     formButtonPrimary: "normal-case text-sm font-semibold",
   },

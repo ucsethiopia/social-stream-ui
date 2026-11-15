@@ -13,8 +13,11 @@ import { cn } from "@/lib/utils";
 
 const MAX_ISSUES = 2;
 const DAY_MS = 24 * 60 * 60 * 1000;
-/** Failed channels can't be retried yet, so only failures from the last few days count as current issues. */
-const ISSUE_MAX_AGE_DAYS = 3;
+/**
+ * Failed channels can't be retried yet (409), so a failure is never "resolved" by a later success.
+ * Show failures from the last two weeks, so a real problem stays visible without lingering forever.
+ */
+const ISSUE_MAX_AGE_DAYS = 14;
 const ISSUE_MAX_AGE_MS = ISSUE_MAX_AGE_DAYS * DAY_MS;
 const FAILED_ACTIVITY_HREF = "/activity?view=failed";
 
