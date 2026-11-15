@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChannelHealth } from "@/components/dashboard/channel-health";
 import { RecentDispatches } from "@/components/dashboard/recent-dispatches";
 import { PostRow } from "@/components/posts/post-list";
+import { PAGE_TITLE_CLASS } from "@/components/shared/page-header";
 import { ErrorState } from "@/components/shared/states";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAuthorNames } from "@/hooks/use-author-names";
@@ -50,17 +51,25 @@ export function Dashboard() {
   return (
     <div className="flex flex-col gap-10">
       <section className="flex flex-col gap-6">
-        <h1 className="font-serif text-[32px] leading-tight font-semibold tracking-tight sm:text-[40px]">
+        {/* The greeting is the home page's title, a size up from other pages */}
+        <h1 className={cn(PAGE_TITLE_CLASS, "text-[28px] sm:text-[34px]")}>
           {greeting()}
-          {firstName ? `, ${firstName}` : ""}.
+          {firstName && (
+            <>
+              ,{" "}
+              {/* Script runs small next to Playfair, so it's scaled up; normal-case keeps the name handwritten */}
+              <span className="font-script text-[1.35em] leading-none font-semibold tracking-normal normal-case">{firstName}</span>
+            </>
+          )}
+          .
         </h1>
 
         <button
           type="button"
           onClick={openNew}
-          className="group flex w-full max-w-3xl items-center gap-4 rounded-2xl border bg-card p-4 text-left shadow-soft transition-[border-color,box-shadow] hover:border-brand/60 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:p-5"
+          className="group flex w-full max-w-3xl items-center gap-4 rounded-2xl border bg-card p-4 text-left shadow-soft transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-foreground/15 hover:shadow-lift motion-safe:active:scale-[0.99] active:duration-75 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:p-5"
         >
-          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-brand text-brand-foreground">
+          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
             <PenLine className="size-5" />
           </span>
           <span className="flex min-w-0 flex-col">

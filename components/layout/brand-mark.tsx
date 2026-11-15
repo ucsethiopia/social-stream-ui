@@ -7,8 +7,11 @@ export function BrandMark({ className, compact = false }: { className?: string; 
       <Image src="/brand/ucs-mark.png" alt="" width={28} height={28} className="size-7" priority />
       {!compact && (
         <span className="flex flex-col leading-none">
-          <span className="font-serif text-[17px] font-semibold tracking-tight">Social Stream</span>
-          <span className="mt-1 text-[11px] text-muted-foreground">Ultimate Consultancy Services</span>
+          {/* One-block wordmark: Ubuntu Sans at its heaviest weight (800), single colour */}
+          <span className="font-(family-name:--font-ubuntu-sans) text-[19px] font-extrabold tracking-tight whitespace-nowrap text-foreground">
+            Social Stream
+          </span>
+          <span className="mt-1.5 text-[11px] text-muted-foreground">Ultimate Consultancy Services</span>
         </span>
       )}
     </span>

@@ -11,8 +11,8 @@ export function OrgSwitcher() {
 
   if (config.mock) {
     return (
-      <span className="flex h-9 min-w-0 items-center gap-2 rounded-md px-2 text-sm font-medium">
-        {orgImageUrl && <Image src={orgImageUrl} alt="" width={20} height={20} className="size-5 rounded-sm" />}
+      <span className="flex h-9 min-w-0 items-center gap-2.5 rounded-md px-2 text-base font-semibold">
+        {orgImageUrl && <Image src={orgImageUrl} alt="" width={24} height={24} className="size-6 rounded-sm" />}
         <span className="truncate">{orgName}</span>
       </span>
     );
@@ -23,7 +23,7 @@ export function OrgSwitcher() {
       hidePersonal
       afterCreateOrganizationUrl="/"
       afterSelectOrganizationUrl="/"
-      appearance={{ elements: { organizationSwitcherTrigger: "h-9 rounded-md px-2 text-sm" } }}
+      appearance={{ elements: { organizationSwitcherTrigger: "h-9 rounded-md px-2 text-base font-semibold" } }}
     />
   );
 }

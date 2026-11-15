@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { Caveat, Playfair_Display, Source_Sans_3, Space_Mono, Ubuntu_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { ReactNode } from "react";
 import { AppProviders } from "@/components/providers/app-providers";
@@ -9,6 +9,11 @@ import "./globals.css";
 
 const sourceSans = Source_Sans_3({ subsets: ["latin"], variable: "--font-source-sans", display: "swap" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
+// Font experiment: blocky mono for UI text, a handwritten script for rare accents
+const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-space-mono", display: "swap" });
+const caveat = Caveat({ subsets: ["latin"], variable: "--font-caveat", display: "swap" });
+// Heavy sans for the "Social Stream" wordmark
+const ubuntuSans = Ubuntu_Sans({ subsets: ["latin"], variable: "--font-ubuntu-sans", display: "swap" });
 
 export const metadata: Metadata = {
   title: { default: "Social Stream · UCS", template: "%s · Social Stream" },
@@ -17,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [{ color: "#1a2744" }],
+  themeColor: [{ color: "#474329" }],
   width: "device-width",
   initialScale: 1,
 };
@@ -33,7 +38,7 @@ function MaybeClerk({ children }: { children: ReactNode }) {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${sourceSans.variable} ${playfair.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${sourceSans.variable} ${playfair.variable} ${spaceMono.variable} ${caveat.variable} ${ubuntuSans.variable}`}>
       <body className="min-h-dvh">
         <MaybeClerk>
           <AppProviders>{children}</AppProviders>

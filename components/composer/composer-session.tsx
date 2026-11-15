@@ -102,13 +102,9 @@ export const ComposerSession = forwardRef<ComposerSessionHandle, Props>(function
       />
 
       <div className="flex items-center justify-center border-b bg-card px-4 py-2 lg:hidden">
-        <ToggleGroup type="single" value={view} onValueChange={(v) => v && setView(v as typeof view)} className="gap-0.5 rounded-full bg-muted p-1" aria-label="Show">
+        <ToggleGroup type="single" value={view} onValueChange={(v) => v && setView(v as typeof view)} variant="segmented" aria-label="Show">
           {(["write", "preview"] as const).map((v) => (
-            <ToggleGroupItem
-              key={v}
-              value={v}
-              className="h-10 rounded-full! px-6 text-muted-foreground capitalize data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-            >
+            <ToggleGroupItem key={v} value={v} className="h-9 px-6 capitalize">
               {v}
             </ToggleGroupItem>
           ))}

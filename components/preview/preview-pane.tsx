@@ -43,7 +43,7 @@ function IssueList({ issues }: { issues: Issue[] }) {
           {issue.level === "error" ? (
             <AlertCircle className="mt-0.5 size-3.5 shrink-0 text-[oklch(0.75_0.16_25)]" aria-label="Blocks publishing" />
           ) : (
-            <AlertTriangle className="mt-0.5 size-3.5 shrink-0 text-gold-400" aria-label="Heads up" />
+            <AlertTriangle className="mt-0.5 size-3.5 shrink-0 text-[oklch(0.8_0.12_78)]" aria-label="Heads up" />
           )}
           {issue.message}
         </li>
@@ -77,7 +77,7 @@ export function PreviewPane({ selected, issues, ...props }: PreviewPaneProps) {
   };
 
   return (
-    <section aria-label="Preview" className="flex h-full min-h-0 flex-col bg-navy-950 text-white dark:bg-[oklch(0.14_0.03_255)]">
+    <section aria-label="Preview" className="flex h-full min-h-0 flex-col bg-olive-950 text-white dark:bg-[oklch(0.178_0.014_94)]">
       <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3 sm:px-6">
         <div role="tablist" aria-label="Preview platform" onKeyDown={onTabKey} className="-mx-1 flex min-w-0 gap-1 overflow-x-auto px-1">
           {ORDER.map((id) => {
@@ -95,8 +95,8 @@ export function PreviewPane({ selected, issues, ...props }: PreviewPaneProps) {
                 tabIndex={tab === id ? 0 : -1}
                 onClick={() => setTab(id)}
                 className={cn(
-                  "relative flex h-8 shrink-0 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium transition-colors focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:outline-none",
-                  tab === id ? "bg-white text-navy-950" : "text-white/65 hover:bg-white/10 hover:text-white",
+                  "relative flex h-8 shrink-0 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium transition-colors focus-visible:ring-2 focus-visible:ring-clay-400 focus-visible:outline-none",
+                  tab === id ? "bg-white text-olive-950" : "text-white/65 hover:bg-white/10 hover:text-white",
                   !on && tab !== id && "text-white/55",
                 )}
               >
@@ -104,7 +104,7 @@ export function PreviewPane({ selected, issues, ...props }: PreviewPaneProps) {
                 <span className="max-sm:sr-only">{p.label}</span>
                 {on && list.length > 0 && (
                   <>
-                    <span aria-hidden className={cn("size-1.5 rounded-full", hasErrors(list) ? "bg-[oklch(0.7_0.18_25)]" : "bg-gold-400")} />
+                    <span aria-hidden className={cn("size-1.5 rounded-full", hasErrors(list) ? "bg-[oklch(0.7_0.18_25)]" : "bg-[oklch(0.8_0.12_78)]")} />
                     <span className="sr-only">
                       {hasErrors(list) ? ", blocked" : ""}, {list.length} {list.length === 1 ? "note" : "notes"}
                     </span>
