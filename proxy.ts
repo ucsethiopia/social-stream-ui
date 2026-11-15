@@ -8,8 +8,10 @@ const mock = process.env.NEXT_PUBLIC_API_MOCK?.trim().toLowerCase() === "true";
 
 const clerkProxy = clerkMiddleware(async (auth, req) => {
   if (isPublicRoute(req)) return;
-  // Signed-out visitors to the home page get the product page rather than a sign-in form.
-  if (req.nextUrl.pathname === "/" && !(await auth()).userId) {
+  // Signed-out visitors to the bare home page get the product page rather than a sign-in form.
+  // A link with a query (a shared `/?compose=<id>`) falls through to protect(), which sends them
+  // to sign-in with a redirect_url back to the full link, so the post still opens afterwards.
+  if (req.nextUrl.pathname === "/" && !req.nextUrl.search && !(await auth()).userId) {
     return NextResponse.redirect(new URL("/welcome", req.url));
   }
   const { orgId } = await auth.protect();
