@@ -55,7 +55,7 @@ function Chip({ platform, on, locked, issues, onClick, disabled, note }: {
           <span
             className={cn(
               "grid size-7 place-items-center rounded-full transition-colors",
-              on ? cn(platform.bgClass, "text-white") : "bg-muted text-muted-foreground",
+              on ? cn(platform.bgClass, "text-white dark:text-olive-950") : "bg-muted text-muted-foreground",
               on && platform.id === "website" && "text-brand-foreground",
             )}
           >

@@ -5,7 +5,12 @@ export function BrandMark({ className, compact = false }: { className?: string; 
   return (
     <span className={cn("flex items-center gap-2.5", className)}>
       <ProductMark />
-      {!compact && <span className="text-[16px] leading-none font-semibold tracking-[-0.02em]">Social Stream</span>}
+      {/* One-block wordmark: Ubuntu Sans at its heaviest weight (800), single colour, inherited so it reads on the stage too */}
+      {!compact && (
+        <span className="font-wordmark text-[19px] leading-none font-extrabold tracking-tight whitespace-nowrap">
+          Social Stream
+        </span>
+      )}
     </span>
   );
 }

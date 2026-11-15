@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { BrandMark } from "@/components/layout/brand-mark";
 import { Fanout } from "@/components/marketing/fanout";
+import { PAGE_TITLE_CLASS } from "@/components/shared/page-header";
 import { config } from "@/lib/config";
 
 /** Split screen for sign-in, sign-up and onboarding: the product on the left, the task on the right. */
@@ -15,7 +16,10 @@ export function AuthFrame({ children, title, subtitle }: { children: ReactNode; 
         </Link>
         <Fanout animate={false} className="mx-auto max-w-[620px]" />
         <div className="max-w-md">
-          <p className="font-display text-[32px] leading-[1.08] font-medium tracking-[-0.02em] text-balance">Write it once. Publish it everywhere.</p>
+          <p className="font-display text-[32px] leading-[1.08] font-medium tracking-[-0.02em] text-balance">
+            Write it once. Publish it{" "}
+            <span className="font-script text-[1.3em] leading-none font-semibold tracking-normal text-clay-400">everywhere</span>.
+          </p>
           <p className="mt-3 text-[15px] leading-relaxed text-stage-foreground/70">
             Your website and every social channel, with a true preview of each before it goes out.
           </p>
@@ -26,7 +30,7 @@ export function AuthFrame({ children, title, subtitle }: { children: ReactNode; 
           <BrandMark />
         </Link>
         <div className="w-full max-w-sm text-center">
-          <h1 className="font-display text-[28px] font-medium tracking-[-0.015em]">{title}</h1>
+          <h1 className={PAGE_TITLE_CLASS}>{title}</h1>
           <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>
         </div>
         {children}

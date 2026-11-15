@@ -29,7 +29,7 @@ export function PostCard({ post, author, onOpen, onPrefetch }: PostCardProps) {
   const { images, mainTag, highlight, when } = postMeta(post);
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-xl border bg-card transition-[border-color,box-shadow] hover:border-foreground/20 hover:shadow-soft focus-within:ring-2 focus-within:ring-ring">
+    <article className="group relative flex flex-col overflow-hidden rounded-xl border bg-card transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-foreground/20 hover:shadow-soft motion-safe:active:scale-[0.99] active:duration-75 focus-within:ring-2 focus-within:ring-ring">
       <div className="relative aspect-[16/10] overflow-hidden bg-muted">
         {images[0] ? (
           <RemoteImage src={images[0]} className="size-full transition-transform duration-500 group-hover:scale-[1.03]" />

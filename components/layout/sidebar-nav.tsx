@@ -44,11 +44,11 @@ function NewPostButton({ onNavigate }: { onNavigate?: () => void }) {
         onNavigate?.();
         openNew();
       }}
-      className="h-10 w-full justify-start gap-2.5 rounded-lg bg-brand font-semibold text-brand-foreground shadow-soft hover:bg-brand-strong max-lg:h-11"
+      className="h-10 w-full justify-start gap-2.5 font-semibold shadow-soft"
     >
       <PenLine className="size-4" />
       New post
-      <kbd className="ml-auto rounded border border-brand-foreground/25 px-1.5 text-[11px] font-medium text-brand-foreground/75 max-lg:hidden">N</kbd>
+      <kbd className="ml-auto rounded border border-primary-foreground/15 px-1.5 text-[11px] font-medium text-primary-foreground/75 max-lg:hidden">N</kbd>
     </Button>
   );
 }

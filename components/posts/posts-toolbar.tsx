@@ -35,24 +35,20 @@ export function PostsToolbar(p: PostsToolbarProps) {
           type="single"
           value={p.status}
           onValueChange={(v) => v && p.onStatus(v as StatusFilter)}
+          variant="segmented"
           aria-label="Status"
-          className="gap-0.5 rounded-lg bg-muted p-1"
         >
           {STATUS_OPTIONS.map((o) => (
-            <ToggleGroupItem
-              key={o.value}
-              value={o.value}
-              className="h-8 rounded-md! px-3.5 text-muted-foreground data-[state=on]:bg-card data-[state=on]:text-foreground data-[state=on]:shadow-soft"
-            >
+            <ToggleGroupItem key={o.value} value={o.value}>
               {o.label}
             </ToggleGroupItem>
           ))}
         </ToggleGroup>
         <div className="relative ml-auto w-full sm:w-64">
-          <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden />
-          <Input id="posts-search" name="search" type="search" value={p.search} onChange={(e) => p.onSearch(e.target.value)} placeholder="Search titles" aria-label="Search posts" className="pl-9" />
+          <Search className="pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden />
+          <Input id="posts-search" name="search" type="search" value={p.search} onChange={(e) => p.onSearch(e.target.value)} placeholder="Search titles" aria-label="Search posts" className="rounded-full bg-card pl-10" />
         </div>
-        <ToggleGroup type="single" value={p.view} onValueChange={(v) => v && p.onView(v as ViewMode)} variant="outline" aria-label="Layout">
+        <ToggleGroup type="single" value={p.view} onValueChange={(v) => v && p.onView(v as ViewMode)} variant="segmented" aria-label="Layout">
           <ToggleGroupItem value="grid" aria-label="Grid view">
             <LayoutGrid />
           </ToggleGroupItem>
@@ -70,8 +66,8 @@ export function PostsToolbar(p: PostsToolbarProps) {
               aria-pressed={p.tag === t}
               onClick={() => p.onTag(t)}
               className={cn(
-                "h-7 rounded-full border px-3 text-[13px] transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
-                p.tag === t ? "border-brand/40 bg-brand-soft font-medium text-brand-ink" : "text-muted-foreground hover:border-foreground/30 hover:text-foreground",
+                "h-7 rounded-full border px-3 text-[13px] transition-[color,background-color,border-color,transform] duration-150 ease-out motion-safe:active:scale-[0.96] active:duration-75 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+                p.tag === t ? "border-primary bg-primary text-primary-foreground" : "text-muted-foreground hover:border-foreground/30 hover:text-foreground",
               )}
             >
               {t ?? "Every tag"}

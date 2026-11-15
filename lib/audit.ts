@@ -51,3 +51,19 @@ export function latestDispatchPerChannel(entries: AuditEntry[]): AuditEntry[] {
   }
   return CHANNEL_ORDER.map((c) => byChannel.get(c)).filter((e): e is AuditEntry => Boolean(e));
 }
+
+function isNewer(a: AuditEntry, b: AuditEntry): boolean {
+  return a.created_at > b.created_at || (a.created_at === b.created_at && a.id > b.id);
+}
+
+/** A channel delivery whose most recent attempt for that post failed. */
+export function unresolvedDeliveryIssues(entries: AuditEntry[]): AuditEntry[] {
+  const latest = new Map<string, AuditEntry>();
+  for (const e of entries) {
+    if (!isDispatch(e) || e.news_id === null || !e.channel) continue;
+    const key = `${e.news_id}:${e.channel}`;
+    const seen = latest.get(key);
+    if (!seen || isNewer(e, seen)) latest.set(key, e);
+  }
+  return [...latest.values()].filter((e) => e.status === "failed").sort((a, b) => (isNewer(a, b) ? -1 : 1));
+}

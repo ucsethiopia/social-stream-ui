@@ -40,7 +40,7 @@ export function SettingsPage() {
           <CompanyForm />
         </Section>
         <Section title="Appearance" description="Saved in this browser only.">
-          <ToggleGroup type="single" variant="outline" value={resolvedTheme ?? "light"} onValueChange={(v) => v && setTheme(v)} aria-label="Theme">
+          <ToggleGroup type="single" variant="segmented" value={resolvedTheme ?? "light"} onValueChange={(v) => v && setTheme(v)} aria-label="Theme">
             <ToggleGroupItem value="light" className="gap-2 px-4"><Sun className="size-4" /> Light</ToggleGroupItem>
             <ToggleGroupItem value="dark" className="gap-2 px-4"><Moon className="size-4" /> Dark</ToggleGroupItem>
           </ToggleGroup>

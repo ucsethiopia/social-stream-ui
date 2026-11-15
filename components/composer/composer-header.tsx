@@ -26,7 +26,7 @@ interface ComposerHeaderProps {
 export function ComposerHeader(p: ComposerHeaderProps) {
   return (
     <header className="flex items-center gap-3 border-b bg-card px-4 py-3 sm:px-6">
-      <Button variant="ghost" size="icon" onClick={p.onClose} aria-label="Close composer" className="-ml-2 shrink-0 max-md:size-11">
+      <Button variant="ghost" size="icon" onClick={p.onClose} aria-label="Close composer" className="-ml-2 shrink-0">
         <X />
       </Button>
       <div className="flex min-w-0 flex-1 flex-col [&>span]:truncate">
@@ -40,7 +40,7 @@ export function ComposerHeader(p: ComposerHeaderProps) {
         {p.canDelete && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="More actions" className="max-md:size-11">
+              <Button variant="ghost" size="icon" aria-label="More actions">
                 <MoreHorizontal />
               </Button>
             </DropdownMenuTrigger>
@@ -61,12 +61,12 @@ export function ComposerHeader(p: ComposerHeaderProps) {
           </Button>
         )}
         {p.published && !p.readOnly && (
-          <Button onClick={p.onSave} disabled={!p.dirty || p.saving} className="max-md:h-11">
+          <Button onClick={p.onSave} disabled={!p.dirty || p.saving}>
             {p.saving ? "Saving" : <span>Save<span className="max-sm:hidden"> changes</span></span>}
           </Button>
         )}
         {!p.published && !p.readOnly && (
-          <Button onClick={p.onPublish} className="bg-brand font-semibold text-brand-foreground shadow-soft hover:bg-brand-strong max-md:h-11 max-md:min-w-11">
+          <Button onClick={p.onPublish} className="font-semibold shadow-soft pointer-coarse:min-w-11">
             <Send />
             <span className="max-sm:sr-only">Review and publish</span>
           </Button>

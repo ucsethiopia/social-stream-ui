@@ -135,7 +135,7 @@ export function PublishDialog({ open, onOpenChange, state: s, onDone }: PublishD
               <Button
                 onClick={() => void run()}
                 disabled={blocked || phase === "publishing"}
-                className="bg-brand font-semibold text-brand-foreground hover:bg-brand-strong"
+                className="font-semibold"
               >
                 {phase === "publishing" ? "Publishing" : channels.length ? `Publish to ${channels.length + 1} destinations` : "Publish to website"}
               </Button>

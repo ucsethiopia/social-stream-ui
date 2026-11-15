@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Menu, Search } from "lucide-react";
-import { Suspense, useCallback, useState, type ReactNode } from "react";
+import { Suspense, useCallback, useState, useSyncExternalStore, type ReactNode } from "react";
 import { BrandMark } from "@/components/layout/brand-mark";
 import { CommandPalette, useCommandPaletteHotkeys } from "@/components/layout/command-palette";
 import { LocalModeBanner } from "@/components/layout/local-mode-banner";
@@ -14,6 +14,7 @@ import { Composer } from "@/components/composer/composer";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { useComposer } from "@/hooks/use-composer";
+import { cn } from "@/lib/utils";
 
 function Shortcuts({ setPalette }: { setPalette: (fn: (open: boolean) => boolean) => void }) {
   const { openNew } = useComposer();
@@ -21,11 +22,29 @@ function Shortcuts({ setPalette }: { setPalette: (fn: (open: boolean) => boolean
   return null;
 }
 
+/** Pixels of scroll before the top bar casts its shadow. */
+const SCROLL_EDGE_PX = 4;
+
+function subscribeToScroll(onChange: () => void) {
+  window.addEventListener("scroll", onChange, { passive: true });
+  return () => window.removeEventListener("scroll", onChange);
+}
+
+/** True once content is scrolling under the top bar. Reads the position on mount too. */
+function useScrolledPastEdge(): boolean {
+  return useSyncExternalStore(
+    subscribeToScroll,
+    () => window.scrollY > SCROLL_EDGE_PX,
+    () => false,
+  );
+}
+
 export function AppShell({ children }: { children: ReactNode }) {
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const togglePalette = useCallback((fn: (open: boolean) => boolean) => setPaletteOpen(fn), []);
   const openPalette = useCallback(() => setPaletteOpen(true), []);
+  const scrolled = useScrolledPastEdge();
 
   return (
     <div className="min-h-dvh">
@@ -43,7 +62,13 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="lg:pl-64">
         <LocalModeBanner />
         {/* Phones and tablets only: on desktop the sidebar carries search and the account menu. */}
-        <header className="sticky top-0 z-20 flex h-14 items-center gap-1 border-b bg-background/85 px-2 backdrop-blur-md sm:px-4 lg:hidden">
+        {/* Scroll edge effect: the bar only casts a shadow once content is scrolling under it. */}
+        <header
+          className={cn(
+            "sticky top-0 z-20 flex h-14 items-center gap-1 bg-background/85 px-2 backdrop-blur-md transition-shadow duration-200 sm:px-4 lg:hidden",
+            scrolled && "shadow-[0_10px_20px_-14px_hsl(var(--shadow-color)/0.35)]",
+          )}
+        >
           <Button variant="ghost" size="icon" className="size-11" onClick={() => setNavOpen(true)} aria-label="Open navigation">
             <Menu />
           </Button>
