@@ -23,6 +23,13 @@ describe("channelIssues blocks what the publishers would reject", () => {
     expect(hasErrors(channelIssues("linkedin", ctx([], "https://ucsethiopia.com")))).toBe(false);
   });
 
+  it.each([
+    ["null (no website, or the company failed to load)", null],
+    ["an empty string (a cleared website)", ""],
+  ])("blocks text-only LinkedIn when the website is %s", (_label, companyWebsiteUrl) => {
+    expect(hasErrors(channelIssues("linkedin", { ...ctx([]), companyWebsiteUrl }))).toBe(true);
+  });
+
   it("doesn't flag a missing website while the company is still loading", () => {
     expect(hasErrors(channelIssues("linkedin", { ...ctx([]), companyWebsiteUrl: undefined }))).toBe(false);
   });

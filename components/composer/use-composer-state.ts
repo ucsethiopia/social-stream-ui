@@ -29,7 +29,7 @@ export function useComposerState(initial: NewsItem | null, onCreated: (item: New
   const { data: live } = usePost(postId);
   const post = live ?? initial;
   const { memberId, isAdmin, isLoading: roleLoading } = useRole();
-  const { data: company } = useCompany();
+  const { data: company, isError: companyFailed } = useCompany();
   const { orgName, orgImageUrl } = useSession();
   const connection = useConnectedChannels();
   const destinations = useDestinations();
@@ -79,12 +79,13 @@ export function useComposerState(initial: NewsItem | null, onCreated: (item: New
     for (const channel of CHANNEL_ORDER) {
       map[channel] = channelIssues(channel, {
         input,
-        companyWebsiteUrl: company ? siteUrlFor(company) : undefined,
+        // Fail closed: if /company errored we can't confirm a website, so LinkedIn text-only posts stay blocked.
+        companyWebsiteUrl: company ? siteUrlFor(company) : companyFailed ? null : undefined,
         connected: connection.known ? connection.connected.has(channel) : undefined,
       });
     }
     return map;
-  }, [input, draft.mainTag, draft.highlight, company, connection]);
+  }, [input, draft.mainTag, draft.highlight, company, companyFailed, connection]);
 
   return {
     form,
