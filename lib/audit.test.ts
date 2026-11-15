@@ -84,6 +84,15 @@ describe("unresolvedDeliveryIssues", () => {
     expect(ids(rows)).toEqual([2, 1]);
   });
 
+  it.each([
+    { label: "keeps a failure at the cutoff", createdAt: "2026-10-23T10:00:00", expected: [1] },
+    { label: "keeps a failure after the cutoff", createdAt: "2026-10-23T11:00:00", expected: [1] },
+    { label: "drops a failure before the cutoff", createdAt: "2026-10-23T09:59:59", expected: [] },
+  ])("with since: $label", ({ createdAt, expected }) => {
+    const since = new Date("2026-10-23T10:00:00Z");
+    expect(unresolvedDeliveryIssues([failed({ id: 1, created_at: createdAt })], since).map((e) => e.id)).toEqual(expected);
+  });
+
   it("ignores non-dispatch rows and dispatches without a post or channel", () => {
     const rows = [
       entry({ id: 1, status: "failed" }),

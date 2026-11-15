@@ -2,7 +2,15 @@
 
 import { CheckCircle2, ImageIcon, XCircle } from "lucide-react";
 import Link from "next/link";
-import { MODULE_GAP_CLASS, MODULE_HEADER_CLASS, MODULE_LINK_CLASS, MODULE_TITLE_CLASS, PANEL_CLASS } from "@/components/dashboard/panel";
+import {
+  MODULE_GAP_CLASS,
+  MODULE_HEADER_CLASS,
+  MODULE_LINK_CLASS,
+  MODULE_TITLE_CLASS,
+  PANEL_CLASS,
+  RECENT_AUDIT_WINDOW,
+  TITLE_SAMPLE,
+} from "@/components/dashboard/panel";
 import { postMeta } from "@/components/posts/post-card";
 import { PlatformIcon } from "@/components/shared/platform-icon";
 import { RemoteImage } from "@/components/shared/remote-image";
@@ -18,9 +26,6 @@ import { CHANNELS } from "@/lib/platforms";
 import { cn } from "@/lib/utils";
 
 const LIMIT = 6;
-/** The API can't filter by action prefix, so read a recent window and keep dispatch rows. Shared with ChannelHealth. */
-const RECENT_WINDOW = 50;
-const TITLE_SAMPLE = 100;
 
 // Two rows on phones (thumbnail beside title, then channel + status); four fixed-width columns from sm up, so every row lines up.
 const ROW_CLASS =
@@ -76,7 +81,7 @@ function RowsSkeleton() {
 }
 
 export function RecentPublishing() {
-  const audit = useAudit({ page: 1, page_size: RECENT_WINDOW });
+  const audit = useAudit({ page: 1, page_size: RECENT_AUDIT_WINDOW });
   const { data: posts } = usePosts({ page: 1, page_size: TITLE_SAMPLE });
   const { openEdit } = useComposer();
   // One row per delivery (post × channel), newest first as the API returns them.
@@ -113,6 +118,8 @@ export function RecentPublishing() {
                     {title}
                   </button>
                   <time dateTime={e.created_at} className="block text-xs text-muted-foreground">{timeAgo(e.created_at)}</time>
+                  {/* The backend's reason, so admins don't have to dig through Activity to see why a send failed */}
+                  {e.error_detail && <span className="block truncate text-xs text-destructive">{e.error_detail}</span>}
                 </div>
                 {/* On phones this wraps channel + status onto a second line; from sm up it dissolves into the grid columns */}
                 <div className="col-start-2 flex min-w-0 items-center gap-3 sm:contents">
