@@ -43,7 +43,7 @@ interface MediaThumbProps {
 }
 
 const ICON_BUTTON =
-  "grid size-9 place-items-center rounded-full bg-navy-950/70 text-white backdrop-blur-sm hover:bg-navy-950 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none md:size-7";
+  "grid size-9 place-items-center rounded-full bg-scrim text-white backdrop-blur-sm hover:bg-stage focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none md:size-7";
 
 export function MediaThumb({ item, index, total, hintId, onMove, isMain, readOnly, onRemove, onRetry, onMakeMain }: MediaThumbProps) {
   const label = `Image ${index + 1} of ${total}${isMain ? ", main image" : ""}`;
@@ -75,7 +75,7 @@ export function MediaThumb({ item, index, total, hintId, onMove, isMain, readOnl
       <RemoteImage src={item.src} alt={label} className="size-full" />
 
       {item.status === "uploading" && (
-        <div className="absolute inset-0 grid place-items-center bg-navy-950/45">
+        <div className="absolute inset-0 grid place-items-center bg-scrim">
           <ProgressRing value={item.progress} />
         </div>
       )}
@@ -90,7 +90,7 @@ export function MediaThumb({ item, index, total, hintId, onMove, isMain, readOnl
       )}
 
       {isMain && item.status === "done" && (
-        <span className="absolute bottom-1.5 left-1.5 rounded bg-navy-950/75 px-1.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm">
+        <span className="absolute bottom-1.5 left-1.5 rounded bg-scrim px-1.5 py-0.5 text-[11px] font-semibold text-white backdrop-blur-sm">
           Main image
         </span>
       )}

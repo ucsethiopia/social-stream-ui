@@ -21,6 +21,6 @@ export type InviteValues = z.infer<typeof inviteSchema>;
 export const companySchema = z.object({
   name: z.string().trim().min(1, "Name is required.").max(255),
   // http(s) only: this value ends up in hrefs, so javascript:/data: must never pass.
-  website_url: z.union([z.literal(""), z.url({ protocol: /^https?$/, message: "Use a full URL, like https://dev.ucsethiopia.com" }).trim()]),
+  website_url: z.union([z.literal(""), z.url({ protocol: /^https?$/, message: "Use a full URL, like https://example.com" }).trim()]),
 });
 export type CompanyValues = z.infer<typeof companySchema>;

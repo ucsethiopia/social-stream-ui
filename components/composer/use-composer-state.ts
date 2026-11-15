@@ -16,6 +16,7 @@ import { config } from "@/lib/config";
 import { CHANNEL_ORDER, type DestinationId } from "@/lib/platforms";
 import { emptyDraft, fromNewsItem, toCaptionInput, type PostDraft } from "@/lib/post-draft";
 import { channelIssues, websiteIssues, type Issue } from "@/lib/readiness";
+import { siteUrlFor } from "@/lib/website";
 import { postDraftSchema } from "@/lib/validation/post-schema";
 
 const PAYLOAD_OPTS = { hashtagsField: config.hashtagsField };
@@ -28,7 +29,7 @@ export function useComposerState(initial: NewsItem | null, onCreated: (item: New
   const { data: live } = usePost(postId);
   const post = live ?? initial;
   const { memberId, isAdmin, isLoading: roleLoading } = useRole();
-  const { data: company } = useCompany();
+  const { data: company, isError: companyFailed } = useCompany();
   const { orgName, orgImageUrl } = useSession();
   const connection = useConnectedChannels();
   const destinations = useDestinations();
@@ -78,12 +79,13 @@ export function useComposerState(initial: NewsItem | null, onCreated: (item: New
     for (const channel of CHANNEL_ORDER) {
       map[channel] = channelIssues(channel, {
         input,
-        companyWebsiteUrl: company?.website_url ?? null,
+        // Fail closed: if /company errored we can't confirm a website, so LinkedIn text-only posts stay blocked.
+        companyWebsiteUrl: company ? siteUrlFor(company) : companyFailed ? null : undefined,
         connected: connection.known ? connection.connected.has(channel) : undefined,
       });
     }
     return map;
-  }, [input, draft.mainTag, draft.highlight, company?.website_url, connection]);
+  }, [input, draft.mainTag, draft.highlight, company, companyFailed, connection]);
 
   return {
     form,
@@ -108,8 +110,9 @@ export function useComposerState(initial: NewsItem | null, onCreated: (item: New
       team: draft.team,
       date: draft.date,
       orgName: company?.name ?? orgName ?? "Your organisation",
-      orgImage: orgImageUrl ?? "/brand/ucs-mark.png",
-      websiteUrl: config.companySiteUrl || company?.website_url || null,
+      orgImage: orgImageUrl,
+      // undefined until the company loads; null means it has no website.
+      websiteUrl: company ? siteUrlFor(company) : undefined,
     },
   };
 }

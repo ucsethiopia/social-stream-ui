@@ -10,11 +10,10 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { useFocusReturn } from "@/hooks/use-focus-return";
 import { usePublishPost } from "@/hooks/use-post-mutations";
 import type { ChannelId, PublishResponse } from "@/lib/api/types";
-import { config } from "@/lib/config";
 import { errorMessage } from "@/lib/errors";
 import { CHANNEL_ORDER, CHANNELS, WEBSITE } from "@/lib/platforms";
 import { hasErrors } from "@/lib/readiness";
-import { articleUrl } from "@/lib/website";
+import { articleUrl, siteUrlFor } from "@/lib/website";
 
 interface PublishDialogProps {
   open: boolean;
@@ -36,7 +35,7 @@ export function PublishDialog({ open, onOpenChange, state: s, onDone }: PublishD
   const blocked =
     hasErrors(websiteIssues) || channels.some((c) => hasErrors(s.issues[c] ?? [])) || s.media.isUploading || failedUploads > 0;
   const failures = response ? Object.values(response.channels).filter((r) => r?.status === "failed").length : 0;
-  const siteUrl = config.companySiteUrl || s.company?.website_url;
+  const siteUrl = siteUrlFor(s.company);
   const liveUrl = response && s.post ? articleUrl(siteUrl, { id: response.post_id, title: s.post.title }) : null;
 
   const run = async () => {
@@ -80,7 +79,7 @@ export function PublishDialog({ open, onOpenChange, state: s, onDone }: PublishD
         onCloseAutoFocus={focus.restore}
       >
         <DialogHeader>
-          <DialogTitle className="font-serif text-2xl">{title}</DialogTitle>
+          <DialogTitle className="font-display text-2xl">{title}</DialogTitle>
           <DialogDescription>
             {phase === "done"
               ? failures
@@ -136,7 +135,7 @@ export function PublishDialog({ open, onOpenChange, state: s, onDone }: PublishD
               <Button
                 onClick={() => void run()}
                 disabled={blocked || phase === "publishing"}
-                className="bg-brand font-semibold text-brand-foreground hover:bg-brand-strong"
+                className="font-semibold"
               >
                 {phase === "publishing" ? "Publishing" : channels.length ? `Publish to ${channels.length + 1} destinations` : "Publish to website"}
               </Button>

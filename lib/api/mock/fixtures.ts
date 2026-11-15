@@ -1,8 +1,9 @@
-// Realistic UCS seed data for NEXT_PUBLIC_API_MOCK. Images live in public/mock.
+// Realistic UCS seed data for NEXT_PUBLIC_API_MOCK (the first mock org; the others
+// are in orgs.ts). Images live in public/mock.
 
-import type { AuditEntry, ChannelCredential, Company, Me, NewsItem, TeamMember } from "@/lib/api/types";
+import type { AuditEntry, ChannelCredential, ChannelId, Company, Me, NewsItem, TeamMember } from "@/lib/api/types";
 
-const COMPANY_ID = 1;
+export const COMPANY_ID = 1;
 
 export const mockCompany: Company = {
   id: COMPANY_ID,
@@ -39,7 +40,7 @@ export const mockChannels: ChannelCredential[] = [
 
 const img = (name: string) => `/mock/${name}`;
 
-interface Seed {
+export interface Seed {
   title: string;
   subtitle: string | null;
   tags: string[];
@@ -51,7 +52,7 @@ interface Seed {
   createdBy: number;
 }
 
-const seeds: Seed[] = [
+const ucsSeeds: Seed[] = [
   {
     title: "Ethiopia's FX Reform, One Year On",
     subtitle: "What the float has meant for importers, banks and inflation — and what comes next",
@@ -117,13 +118,15 @@ function isoDaysAgo(days: number, hoursEarlier = 0): string {
   return new Date(Date.now() - days * DAY_MS - hoursEarlier * HOUR_MS).toISOString().slice(0, 19);
 }
 
-export function buildMockNews(): NewsItem[] {
+export const UCS_NEWS_ID_START = 40;
+
+export function buildMockNews(seeds: Seed[] = ucsSeeds, companyId = COMPANY_ID, idStart = UCS_NEWS_ID_START): NewsItem[] {
   return seeds.map((s, i) => {
     const created = isoDaysAgo(s.daysAgo, 26);
     const images = s.images.map(img);
     return {
-      id: 40 + i,
-      company_id: COMPANY_ID,
+      id: idStart + i,
+      company_id: companyId,
       title: s.title,
       subtitle: s.subtitle,
       date: created.slice(0, 10),
@@ -145,25 +148,29 @@ export function buildMockNews(): NewsItem[] {
 export const MOCK_AUDIT_ID_START = 5000;
 
 // Same rows the backend writes on publish: "post.published" then "publish.{channel}.{status}".
-export function buildMockAudit(news: NewsItem[]): AuditEntry[] {
+export function buildMockAudit(news: NewsItem[], channels: ChannelId[] = ["linkedin", "telegram"]): AuditEntry[] {
   const entries: AuditEntry[] = [];
   let id = MOCK_AUDIT_ID_START;
   for (const n of news) {
     if (n.status !== "published" || !n.published_at) continue;
     const at = n.published_at.replace("Z", "");
-    const base = { company_id: COMPANY_ID, actor_id: n.created_by, news_id: n.id, created_at: at };
+    const base = { company_id: n.company_id, actor_id: n.created_by, news_id: n.id, created_at: at };
     const telegramFailed = n.id % 2 === 1;
     entries.push({ ...base, id: id++, action: "post.published", channel: null, status: null, error_detail: null, metadata: null });
-    entries.push({ ...base, id: id++, action: "publish.linkedin.success", channel: "linkedin", status: "success", error_detail: null, metadata: { platform_post_id: "urn:li:share:7100" } });
-    entries.push({
-      ...base,
-      id: id++,
-      action: `publish.telegram.${telegramFailed ? "failed" : "success"}`,
-      channel: "telegram",
-      status: telegramFailed ? "failed" : "success",
-      error_detail: telegramFailed ? "Bad Request: chat not found" : null,
-      metadata: { platform_post_id: telegramFailed ? null : "481" },
-    });
+    if (channels.includes("linkedin")) {
+      entries.push({ ...base, id: id++, action: "publish.linkedin.success", channel: "linkedin", status: "success", error_detail: null, metadata: { platform_post_id: "urn:li:share:7100" } });
+    }
+    if (channels.includes("telegram")) {
+      entries.push({
+        ...base,
+        id: id++,
+        action: `publish.telegram.${telegramFailed ? "failed" : "success"}`,
+        channel: "telegram",
+        status: telegramFailed ? "failed" : "success",
+        error_detail: telegramFailed ? "Bad Request: chat not found" : null,
+        metadata: { platform_post_id: telegramFailed ? null : "481" },
+      });
+    }
   }
   return entries.sort((a, b) => b.created_at.localeCompare(a.created_at));
 }

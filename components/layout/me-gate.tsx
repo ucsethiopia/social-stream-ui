@@ -1,14 +1,16 @@
 "use client";
 
-import { ShieldOff } from "lucide-react";
+import { Building2, ShieldOff } from "lucide-react";
 import type { ReactNode } from "react";
 import { EmptyState, ErrorState } from "@/components/shared/states";
+import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useMe } from "@/hooks/use-me";
 import { ApiError } from "@/lib/api/client";
 import { useSession } from "@/lib/auth/session";
 
 const HTTP_FORBIDDEN = 403;
+const HTTP_CONFLICT = 409;
 
 /** Calls GET /me once (JIT-provisions the member) before rendering the app. */
 export function MeGate({ children }: { children: ReactNode }) {
@@ -38,6 +40,17 @@ export function MeGate({ children }: { children: ReactNode }) {
         icon={ShieldOff}
         title="Your role doesn't have access"
         description="Social Stream works with the Admin and Editor organisation roles. Ask an admin to give you one of them in Clerk."
+      />
+    );
+  }
+  // First /me for a new org answers 409 when another org already has the same name.
+  if (error instanceof ApiError && error.status === HTTP_CONFLICT) {
+    return (
+      <EmptyState
+        icon={Building2}
+        title="This organisation name is already taken"
+        description="Another organisation in Social Stream has the same name. Rename yours from the organisation menu (Manage organisation), then try again."
+        action={<Button onClick={() => void refetch()}>Try again</Button>}
       />
     );
   }

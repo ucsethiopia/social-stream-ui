@@ -49,7 +49,7 @@ export function ChannelCard({ platform, credential, onConnect, onDisconnect }: C
           {connected ? "Update credentials" : `Connect ${platform.label}`}
         </Button>
         {connected && (
-          <Button variant="ghost" className="text-destructive hover:bg-destructive-soft hover:text-destructive" onClick={onDisconnect}>
+          <Button variant="ghost" className="ml-auto text-destructive hover:bg-destructive-soft hover:text-destructive" onClick={onDisconnect}>
             Disconnect
           </Button>
         )}

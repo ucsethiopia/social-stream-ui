@@ -29,7 +29,7 @@ export function PostCard({ post, author, onOpen, onPrefetch }: PostCardProps) {
   const { images, mainTag, highlight, when } = postMeta(post);
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-xl border bg-card transition-[border-color,box-shadow] hover:border-foreground/20 hover:shadow-soft focus-within:ring-2 focus-within:ring-ring">
+    <article className="group relative flex flex-col overflow-hidden rounded-xl border bg-card transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-foreground/20 hover:shadow-soft motion-safe:active:scale-[0.99] active:duration-75 focus-within:ring-2 focus-within:ring-ring">
       <div className="relative aspect-[16/10] overflow-hidden bg-muted">
         {images[0] ? (
           <RemoteImage src={images[0]} className="size-full transition-transform duration-500 group-hover:scale-[1.03]" />
@@ -47,7 +47,7 @@ export function PostCard({ post, author, onOpen, onPrefetch }: PostCardProps) {
           )}
         </div>
         {images.length > 1 && (
-          <span className="absolute right-3 bottom-3 inline-flex h-6 items-center gap-1 rounded-full bg-navy-950/70 px-2 text-xs font-medium text-white backdrop-blur-sm">
+          <span className="absolute right-3 bottom-3 inline-flex h-6 items-center gap-1 rounded-full bg-scrim px-2 text-xs font-medium text-white backdrop-blur-sm">
             <Images className="size-3" aria-hidden /> {images.length}
             <span className="sr-only"> images</span>
           </span>
@@ -55,7 +55,7 @@ export function PostCard({ post, author, onOpen, onPrefetch }: PostCardProps) {
       </div>
       <div className="flex flex-1 flex-col p-4">
         {mainTag && <span className="mb-1.5 text-xs font-semibold text-brand-ink">{mainTag}</span>}
-        <h2 className="line-clamp-2 font-serif text-[17px] leading-snug font-semibold text-balance">
+        <h2 className="line-clamp-2 font-display text-[17px] leading-snug font-semibold text-balance">
           <button
             type="button"
             onClick={() => onOpen(post.id)}

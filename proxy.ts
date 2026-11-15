@@ -1,19 +1,25 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
+const isPublicRoute = createRouteMatcher(["/welcome(.*)", "/sign-in(.*)", "/sign-up(.*)"]);
 const isOnboardingRoute = createRouteMatcher(["/onboarding(.*)"]);
 
 const mock = process.env.NEXT_PUBLIC_API_MOCK?.trim().toLowerCase() === "true";
 
 const clerkProxy = clerkMiddleware(async (auth, req) => {
   if (isPublicRoute(req)) return;
+  // Signed-out visitors to the bare home page get the product page rather than a sign-in form.
+  // A link with a query (a shared `/?compose=<id>`) falls through to protect(), which sends them
+  // to sign-in with a redirect_url back to the full link, so the post still opens afterwards.
+  if (req.nextUrl.pathname === "/" && !req.nextUrl.search && !(await auth()).userId) {
+    return NextResponse.redirect(new URL("/welcome", req.url));
+  }
   const { orgId } = await auth.protect();
   // Social Stream is org-scoped: no active org means nothing to show yet.
   if (!orgId && !isOnboardingRoute(req)) {
     return NextResponse.redirect(new URL("/onboarding", req.url));
   }
-});
+}, { signInUrl: "/sign-in", signUpUrl: "/sign-up" });
 
 export default mock ? () => NextResponse.next() : clerkProxy;
 

@@ -9,6 +9,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -17,18 +19,23 @@ import { useRole } from "@/hooks/use-me";
 import { useSession } from "@/lib/auth/session";
 import { initials } from "@/lib/format";
 
+const THEMES = [
+  { value: "light", label: "Light", icon: Sun },
+  { value: "dark", label: "Dark", icon: Moon },
+] as const;
+/** Light by default; the system setting isn't followed (ThemeProvider has enableSystem off). */
+const DEFAULT_THEME = "light";
+
+/** The account menu behind the avatar at the right of the top bar. */
 export function UserMenu() {
   const { user, orgName, signOut } = useSession();
   const { role } = useRole();
-  const { resolvedTheme, setTheme } = useTheme();
-  const dark = resolvedTheme === "dark";
+  const { theme, setTheme } = useTheme();
   if (!user) return null;
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        className="rounded-full focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-      >
+      <DropdownMenuTrigger className="rounded-full focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
         <span className="sr-only">Account menu</span>
         <Avatar className="size-8 border border-border">
           {user.imageUrl && <AvatarImage src={user.imageUrl} alt="" />}
@@ -45,17 +52,22 @@ export function UserMenu() {
           {orgName && <span className="truncate text-xs text-muted-foreground">{orgName}</span>}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onSelect={() => setTheme(dark ? "light" : "dark")}>
-          {dark ? <Sun /> : <Moon />}
-          {dark ? "Light mode" : "Dark mode"}
-        </DropdownMenuItem>
+        <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">Theme</DropdownMenuLabel>
+        <DropdownMenuRadioGroup value={theme ?? DEFAULT_THEME} onValueChange={setTheme}>
+          {THEMES.map(({ value, label, icon: Icon }) => (
+            <DropdownMenuRadioItem key={value} value={value}>
+              <Icon />
+              {label}
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+        <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href="/settings">
             <Settings />
             Settings
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuSeparator />
         <DropdownMenuItem onSelect={() => void signOut()}>
           <LogOut />
           Sign out

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { AuditEntry } from "@/lib/api/types";
-import { activityQuery, isDispatch, latestDispatchPerChannel } from "@/lib/audit";
+import { activityQuery, isDispatch, latestDispatchPerChannel, unresolvedDeliveryIssues } from "@/lib/audit";
 
 const entry = (over: Partial<AuditEntry>): AuditEntry => ({
   id: 1,
@@ -50,5 +50,55 @@ describe("latestDispatchPerChannel", () => {
       entry({ id: 5 }),
     ];
     expect(latestDispatchPerChannel(rows).map((e) => e.id)).toEqual([4, 3]);
+  });
+});
+
+describe("unresolvedDeliveryIssues", () => {
+  const failed = (over: Partial<AuditEntry>) => entry({ action: "publish.telegram.failed", channel: "telegram", status: "failed", ...over });
+  const success = (over: Partial<AuditEntry>) => entry({ action: "publish.telegram.success", channel: "telegram", status: "success", ...over });
+  const ids = (rows: AuditEntry[]) => unresolvedDeliveryIssues(rows).map((e) => e.id);
+
+  it("returns a failure with no later attempt", () => {
+    expect(ids([failed({ id: 1 })])).toEqual([1]);
+  });
+
+  it("drops a failure that a later success on the same post and channel resolved", () => {
+    expect(ids([success({ id: 2, created_at: "2026-10-23T11:00:00" }), failed({ id: 1, created_at: "2026-10-23T10:00:00" })])).toEqual([]);
+  });
+
+  it("keeps a failure that came after a success", () => {
+    expect(ids([failed({ id: 2, created_at: "2026-10-23T11:00:00" }), success({ id: 1, created_at: "2026-10-23T10:00:00" })])).toEqual([2]);
+  });
+
+  it("breaks timestamp ties by the higher id", () => {
+    expect(ids([failed({ id: 1 }), success({ id: 2 })])).toEqual([]);
+    expect(ids([success({ id: 1 }), failed({ id: 2 })])).toEqual([2]);
+  });
+
+  it("returns failures on different posts and channels, newest first", () => {
+    const rows = [
+      failed({ id: 1, news_id: 1, created_at: "2026-10-23T09:00:00" }),
+      failed({ id: 2, news_id: 2, action: "publish.instagram.failed", channel: "instagram", created_at: "2026-10-23T12:00:00" }),
+      success({ id: 3, news_id: 2, created_at: "2026-10-23T12:30:00" }),
+    ];
+    expect(ids(rows)).toEqual([2, 1]);
+  });
+
+  it.each([
+    { label: "keeps a failure at the cutoff", createdAt: "2026-10-23T10:00:00", expected: [1] },
+    { label: "keeps a failure after the cutoff", createdAt: "2026-10-23T11:00:00", expected: [1] },
+    { label: "drops a failure before the cutoff", createdAt: "2026-10-23T09:59:59", expected: [] },
+  ])("with since: $label", ({ createdAt, expected }) => {
+    const since = new Date("2026-10-23T10:00:00Z");
+    expect(unresolvedDeliveryIssues([failed({ id: 1, created_at: createdAt })], since).map((e) => e.id)).toEqual(expected);
+  });
+
+  it("ignores non-dispatch rows and dispatches without a post or channel", () => {
+    const rows = [
+      entry({ id: 1, status: "failed" }),
+      failed({ id: 2, news_id: null }),
+      failed({ id: 3, channel: null }),
+    ];
+    expect(ids(rows)).toEqual([]);
   });
 });

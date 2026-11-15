@@ -79,7 +79,7 @@ export const CHANNELS: Record<ChannelId, Platform> = {
     setupHint: "Create a bot with @BotFather, then add it as an admin of your channel with permission to post.",
     credentialFields: [
       { key: "bot_token", label: "Bot token", placeholder: "123456:ABC-DEF…", help: "From @BotFather → /newbot.", secret: true, pattern: { regex: /^\d+:[\w-]{20,}$/, message: "Bot tokens look like 123456789:AAH… — copy the whole token from @BotFather." } },
-      { key: "channel_id", label: "Channel ID", placeholder: "@ucsethiopia", help: "Public @username, or the numeric chat id for private channels and groups.", secret: false, pattern: { regex: /^(@[A-Za-z0-9_]{4,}|-?\d+)$/, message: "Use @channelname or a numeric chat id like -1001234567890." } },
+      { key: "channel_id", label: "Channel ID", placeholder: "@yourchannel", help: "Public @username, or the numeric chat id for private channels and groups.", secret: false, pattern: { regex: /^(@[A-Za-z0-9_]{4,}|-?\d+)$/, message: "Use @channelname or a numeric chat id like -1001234567890." } },
     ],
   },
   facebook: {

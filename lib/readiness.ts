@@ -15,7 +15,11 @@ export interface Issue {
 
 export interface ReadinessContext {
   input: CaptionInput;
-  companyWebsiteUrl: string | null;
+  /**
+   * undefined only while the company is still loading, so no false "needs a website" error.
+   * Pass null (not undefined) when the company failed to load, so the check fails closed.
+   */
+  companyWebsiteUrl: string | null | undefined;
   /** undefined when the viewer can't know (editors can't read /channels). */
   connected?: boolean;
 }
@@ -64,7 +68,7 @@ export function channelIssues(channel: ChannelId, ctx: ReadinessContext): Issue[
   if (rules.jpegOnly && input.imageUrls.some(hasNonJpegExtension)) {
     issues.push({ level: "error", message: `${label} only accepts JPEG images. Replace the PNG or WEBP files, or turn ${label} off.` });
   }
-  if (rules.needsWebsiteUrlWithoutImage && imageCount === 0 && !ctx.companyWebsiteUrl) {
+  if (rules.needsWebsiteUrlWithoutImage && imageCount === 0 && ctx.companyWebsiteUrl !== undefined && !ctx.companyWebsiteUrl) {
     issues.push({ level: "error", message: "Text-only LinkedIn posts need the company website URL (Settings)." });
   }
   if (rules.maxImages && imageCount > rules.maxImages) {

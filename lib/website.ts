@@ -30,3 +30,8 @@ export function articleUrl(rawSiteUrl: string | null | undefined, post: { id: nu
   const slug = slugify(post.title);
   return `${siteUrl.replace(/\/$/, "")}/news/${slug ? `${post.id}-${slug}` : post.id}`;
 }
+
+/** Each organisation's own public site (Settings → Website), or null when it hasn't set one. */
+export function siteUrlFor(company: { website_url: string | null } | null | undefined): string | null {
+  return safeHttpUrl(company?.website_url);
+}

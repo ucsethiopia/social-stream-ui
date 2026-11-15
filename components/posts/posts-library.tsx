@@ -17,11 +17,15 @@ import { useStoredState } from "@/hooks/use-stored-state";
 /** The API has no search, so filters run over the newest posts it can return in one page (max 100). */
 const SEARCH_SAMPLE = 100;
 
-export function PostsLibrary() {
+function toStatusFilter(value: string | undefined): StatusFilter {
+  return value === "draft" || value === "published" ? value : "all";
+}
+
+export function PostsLibrary({ initialStatus }: { initialStatus?: string }) {
   const { openNew, openEdit } = useComposer();
   const prefetch = usePrefetchPost();
   const authorOf = useAuthorNames();
-  const [status, setStatus] = useState<StatusFilter>("all");
+  const [status, setStatus] = useState<StatusFilter>(() => toStatusFilter(initialStatus));
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [tag, setTag] = useState<string | null>(null);
@@ -49,7 +53,7 @@ export function PostsLibrary() {
     <>
       <PageHeader
         title="Posts"
-        description="Everything your team has written. Drafts stay private until you publish them."
+        description="Everything your team has written. Drafts stay off the website until you publish them."
         actions={
           <Button onClick={openNew}>
             <PenLine /> New post

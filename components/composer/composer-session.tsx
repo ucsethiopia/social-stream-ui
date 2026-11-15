@@ -14,10 +14,9 @@ import { PublishDialog } from "@/components/publish/publish-dialog";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useDeletePost } from "@/hooks/use-post-mutations";
 import type { NewsItem } from "@/lib/api/types";
-import { config } from "@/lib/config";
 import { errorMessage } from "@/lib/errors";
 import { cn } from "@/lib/utils";
-import { articleUrl } from "@/lib/website";
+import { articleUrl, siteUrlFor } from "@/lib/website";
 
 export interface ComposerSessionHandle {
   requestClose: () => void;
@@ -81,7 +80,7 @@ export const ComposerSession = forwardRef<ComposerSessionHandle, Props>(function
   };
 
   const title = s.readOnly ? "Post" : s.published ? "Published post" : s.postId ? "Edit draft" : "New post";
-  const siteUrl = config.companySiteUrl || s.company?.website_url;
+  const siteUrl = siteUrlFor(s.company);
 
   return (
     <div className="flex h-full min-h-0 flex-col" onPaste={onPaste}>
@@ -102,13 +101,9 @@ export const ComposerSession = forwardRef<ComposerSessionHandle, Props>(function
       />
 
       <div className="flex items-center justify-center border-b bg-card px-4 py-2 lg:hidden">
-        <ToggleGroup type="single" value={view} onValueChange={(v) => v && setView(v as typeof view)} className="gap-0.5 rounded-full bg-muted p-1" aria-label="Show">
+        <ToggleGroup type="single" value={view} onValueChange={(v) => v && setView(v as typeof view)} variant="segmented" aria-label="Show">
           {(["write", "preview"] as const).map((v) => (
-            <ToggleGroupItem
-              key={v}
-              value={v}
-              className="h-10 rounded-full! px-6 text-muted-foreground capitalize data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-            >
+            <ToggleGroupItem key={v} value={v} className="h-9 px-6 capitalize">
               {v}
             </ToggleGroupItem>
           ))}
@@ -133,7 +128,7 @@ export const ComposerSession = forwardRef<ComposerSessionHandle, Props>(function
           </div>
         </div>
         <div className={cn("min-h-0", view === "write" && "max-lg:hidden")}>
-          <PreviewPane selected={s.selected} issues={s.issues} {...s.previewProps} />
+          <PreviewPane selected={s.selected} connected={s.connection.known ? s.connection.connected : null} issues={s.issues} {...s.previewProps} />
         </div>
       </div>
 

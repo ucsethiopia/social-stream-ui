@@ -4,6 +4,7 @@
 // The API filters `action` by exact match only, so prefix matching happens here.
 
 import type { AuditEntry, AuditListParams, ChannelId } from "@/lib/api/types";
+import { parseApiDate } from "@/lib/format";
 import { CHANNEL_ORDER } from "@/lib/platforms";
 
 export const POST_PUBLISHED = "post.published";
@@ -41,13 +42,37 @@ export function activityQuery(
   return { params: { page, page_size: pageSize, channel: channel ?? undefined }, clientFilter: null };
 }
 
+function isNewer(a: AuditEntry, b: AuditEntry): boolean {
+  return a.created_at > b.created_at || (a.created_at === b.created_at && a.id > b.id);
+}
+
 /** One result per channel (the newest), in display order. */
 export function latestDispatchPerChannel(entries: AuditEntry[]): AuditEntry[] {
   const byChannel = new Map<ChannelId, AuditEntry>();
   for (const e of entries) {
     if (!isDispatch(e) || !e.channel) continue;
     const seen = byChannel.get(e.channel);
-    if (!seen || e.created_at > seen.created_at || (e.created_at === seen.created_at && e.id > seen.id)) byChannel.set(e.channel, e);
+    if (!seen || isNewer(e, seen)) byChannel.set(e.channel, e);
   }
   return CHANNEL_ORDER.map((c) => byChannel.get(c)).filter((e): e is AuditEntry => Boolean(e));
+}
+
+/**
+ * Channel deliveries whose most recent attempt for that post failed, newest first.
+ *
+ * The backend can't retry a failed channel yet (re-publishing returns 409), so a
+ * failure is almost never followed by a success. Pass `since` to keep only recent
+ * failures; otherwise one old failure would stay on the dashboard indefinitely.
+ */
+export function unresolvedDeliveryIssues(entries: AuditEntry[], since?: Date): AuditEntry[] {
+  const latest = new Map<string, AuditEntry>();
+  for (const e of entries) {
+    if (!isDispatch(e) || e.news_id === null || !e.channel) continue;
+    const key = `${e.news_id}:${e.channel}`;
+    const seen = latest.get(key);
+    if (!seen || isNewer(e, seen)) latest.set(key, e);
+  }
+  return [...latest.values()]
+    .filter((e) => e.status === "failed" && (!since || parseApiDate(e.created_at) >= since))
+    .sort((a, b) => (isNewer(a, b) ? -1 : 1));
 }

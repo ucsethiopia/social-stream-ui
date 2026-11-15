@@ -2,6 +2,7 @@
 
 export const clerkAppearance = {
   variables: {
+    // Mocha, like every primary button in the app.
     colorPrimary: "var(--primary)",
     colorPrimaryForeground: "var(--primary-foreground)",
     colorBackground: "var(--card)",
@@ -15,12 +16,12 @@ export const clerkAppearance = {
     colorDanger: "var(--destructive)",
     colorSuccess: "var(--success)",
     colorWarning: "var(--warning)",
-    fontFamily: "var(--font-source-sans), system-ui, sans-serif",
+    fontFamily: "var(--font-space-mono), ui-monospace, monospace",
     borderRadius: "0.5rem",
   },
   elements: {
     card: "shadow-none border border-border",
-    headerTitle: "font-serif text-2xl",
+    headerTitle: "font-display text-2xl font-semibold",
     formButtonPrimary: "normal-case text-sm font-semibold",
   },
 } as const;

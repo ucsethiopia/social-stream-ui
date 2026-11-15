@@ -108,7 +108,7 @@ export function HashtagInput({ value, onChange, suggestions, disabled, id }: Has
             onKeyDown={onKeyDown}
             onPaste={onPaste}
             aria-describedby={hintId}
-            placeholder={value.length ? "Add another" : "UCSEthiopia, Economy…"}
+            placeholder={value.length ? "Add another" : "Announcement, Research…"}
             className="h-7 w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
           />
         </span>

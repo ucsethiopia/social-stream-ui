@@ -14,8 +14,26 @@ function assertNoAccidentalMockBuild(phase: string) {
   }
 }
 
+// Without Clerk keys the build still succeeds, but proxy.ts then fails every request
+// with a 500 at runtime. Fail the build instead (e.g. a Vercel environment with no
+// variables set). Mock mode doesn't use Clerk, so it's exempt.
+const CLERK_KEYS = ["NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY", "CLERK_SECRET_KEY"] as const;
+
+function assertClerkKeys(phase: string) {
+  const mock = process.env.NEXT_PUBLIC_API_MOCK?.trim().toLowerCase() === "true";
+  if (phase !== PHASE_PRODUCTION_BUILD || mock) return;
+  const missing = CLERK_KEYS.filter((name) => !process.env[name]?.trim());
+  if (missing.length) {
+    throw new Error(
+      `Missing ${missing.join(" and ")}: every page would return 500. ` +
+        "Set the Clerk keys, or NEXT_PUBLIC_API_MOCK=true with ALLOW_MOCK_BUILD=true for a demo build.",
+    );
+  }
+}
+
 export default function config(phase: string): NextConfig {
   assertNoAccidentalMockBuild(phase);
+  assertClerkKeys(phase);
   return {
     turbopack: {
       rules: {

@@ -1,17 +1,16 @@
 import { ArrowRight } from "lucide-react";
 import { RemoteImage } from "@/components/shared/remote-image";
 import type { PreviewProps } from "@/components/preview/shared";
-import { DEFAULT_SITE_URL } from "@/lib/config";
 import { formatDay } from "@/lib/format";
 
 const MAX_PARAGRAPHS = 4;
 
-/** Mirrors ucs-ui app/news/news-card.tsx and the article view, always in the site's light theme. */
+/** Mirrors ucs-ui app/news/news-card.tsx and the article view (the reference site), always in the site's light theme. */
 export function WebsitePreview({ input, mainTag, highlight, team, date, websiteUrl }: PreviewProps) {
   const image = input.imageUrls[0];
   const category = mainTag || "News";
   const paragraphs = input.body.split(/\n{2,}/).filter(Boolean).slice(0, MAX_PARAGRAPHS);
-  const host = new URL(websiteUrl ?? DEFAULT_SITE_URL).host;
+  const host = websiteUrl ? new URL(websiteUrl).host : null;
 
   return (
     <div className="overflow-hidden rounded-xl bg-[#fcfcfa] text-[#141e33] shadow-lift">
@@ -21,10 +20,15 @@ export function WebsitePreview({ input, mainTag, highlight, team, date, websiteU
           <span className="size-2.5 rounded-full bg-neutral-200" />
           <span className="size-2.5 rounded-full bg-neutral-200" />
         </span>
-        <span className="mx-auto truncate rounded bg-neutral-100 px-3 py-0.5 text-neutral-600">{host}/news</span>
+        <span className="mx-auto truncate rounded bg-neutral-100 px-3 py-0.5 text-neutral-600">{host ? `${host}/news` : websiteUrl === null ? "No website set" : "\u00a0"}</span>
       </div>
 
       <div className="p-5">
+        {websiteUrl === null && (
+          <p className="mb-4 rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-900">
+            This organisation hasn&apos;t added its website yet, so there&apos;s no &ldquo;View on website&rdquo; link. An admin can add it in Settings.
+          </p>
+        )}
         <p className="mb-3 text-xs text-neutral-500">
           {highlight ? "News page card, featured in Highlights" : "News page card"}
         </p>
