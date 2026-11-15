@@ -14,6 +14,7 @@
   --sand-50: oklch(0.975 0.008 74); /* #FAF6F1 */
   --clay-600: oklch(0.538 0.125 41); /* #A9512F Terracotta */
   --clay-400: oklch(0.671 0.134 42); /* #D9774F */
+  --clay-200: oklch(0.851 0.076 64); /* #F2C49A Pale apricot, home hero art only */
 
   /* Platform brand colors — used only inside platform chips/icons */
   --platform-website: var(--clay-600);
