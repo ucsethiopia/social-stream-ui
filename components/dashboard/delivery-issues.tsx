@@ -16,7 +16,7 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 /** Failed channels can't be retried yet, so only failures from the last few days count as current issues. */
 const ISSUE_MAX_AGE_DAYS = 3;
 const ISSUE_MAX_AGE_MS = ISSUE_MAX_AGE_DAYS * DAY_MS;
-const FAILED_ACTIVITY_HREF = "/activity";
+const FAILED_ACTIVITY_HREF = "/activity?view=failed";
 
 /** Recent failed channel deliveries, at the foot of the Channel health panel. Renders nothing when there are none. */
 export function DeliveryIssues() {

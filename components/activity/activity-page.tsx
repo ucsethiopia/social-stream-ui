@@ -41,9 +41,13 @@ function groupByDay(items: AuditEntry[]): Array<[string, AuditEntry[]]> {
   return [...groups.entries()];
 }
 
-function ActivityContent() {
+function toActivityView(value: string | undefined): ActivityView {
+  return ACTIVITY_VIEWS.find((v) => v.value === value)?.value ?? "all";
+}
+
+function ActivityContent({ initialView }: { initialView?: string }) {
   const [page, setPage] = useState(1);
-  const [view, setView] = useState<ActivityView>("all");
+  const [view, setView] = useState<ActivityView>(() => toActivityView(initialView));
   const [channel, setChannel] = useState(ALL);
   const { openEdit } = useComposer();
   const authorOf = useAuthorNames();
@@ -109,12 +113,12 @@ function ActivityContent() {
   );
 }
 
-export function ActivityPage() {
+export function ActivityPage({ initialView }: { initialView?: string }) {
   return (
     <>
       <PageHeader title="Activity" description="Who created and published what, and how each channel delivery went." />
       <AdminOnly what="the activity log">
-        <ActivityContent />
+        <ActivityContent initialView={initialView} />
       </AdminOnly>
     </>
   );

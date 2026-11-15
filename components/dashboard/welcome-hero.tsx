@@ -51,8 +51,8 @@ function Stat({ label, href, count }: { label: string; href: string; count: Coun
 export function WelcomeHero({ firstName, onCreate, drafts, published, channels }: WelcomeHeroProps) {
   const headingId = useId();
   const stats = [
-    { label: "Drafts in progress", href: "/posts", count: drafts },
-    { label: "Published posts", href: "/posts", count: published },
+    { label: "Drafts in progress", href: "/posts?status=draft", count: drafts },
+    { label: "Published posts", href: "/posts?status=published", count: published },
     ...(channels ? [{ label: "Connected channels", href: "/channels", count: channels }] : []),
   ];
 
@@ -87,7 +87,7 @@ export function WelcomeHero({ firstName, onCreate, drafts, published, channels }
               Create a post
             </Button>
             <Button variant="ghost" asChild>
-              <Link href="/posts">View drafts</Link>
+              <Link href="/posts?status=draft">View drafts</Link>
             </Button>
           </div>
         </div>
